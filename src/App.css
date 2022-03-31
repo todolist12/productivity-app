@@ -61,6 +61,11 @@
   transform: scale(1.03);
 }
 
+.hover:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
 .header-btn-hover:hover {
   background-color: rgb(238, 238, 238);
   border-bottom: 2px solid green;
