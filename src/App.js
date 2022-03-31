@@ -1,32 +1,33 @@
 import './App.css';
 import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import TodoListBoardPage from './pages/TodoListBoardPage';
+import PlanningPage from './pages/PlanningPage';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
+import MindmapPage from './pages/MindmapPage';
 
 function App() {
-    const [theme, setTheme] = useState('light');
-
-    const handleChangeTheme = () => {
-        if(theme === 'light') {
-            setTheme('dark');
-            document.documentElement.style.setProperty('--logo-color', )
-        } else {
-            setTheme('light')
-        }
-    }
 
     return (
-        <div className="app bg-color-1 tex-xl h-screen w-screen">
-            <button className = "p-0 m-3 border-0" onClick = {handleChangeTheme}>
-                {
-                    theme === 'light' ?
-                        <div className = "theme-btn">
-                            <ion-icon name="sunny-outline"></ion-icon> 
-                        </div>
-                    : 
-                        <div className = "theme-btn">
-                            <ion-icon name="moon-outline"></ion-icon>
-                        </div>
-                }
-            </button>
+        <div>
+            <BrowserRouter>
+                <Routes>
+                    <Route path = "/" element = {<Home />} />
+                    <Route path = "/login" element = {<Login />} />
+                    <Route path = "/register" element = {<Register />} />
+                    <Route path = "/planning/:planningId" element = {<PlanningPage />} />
+                    <Route path = "/todo-list-board/:todoListBoardId" element = {<TodoListBoardPage />} />
+                    <Route path = "/dashboard" element = {<Dashboard />} />
+                    <Route path = "/profile" element = {<Profile />} />
+                    <Route path = "/settings" element = {<Settings />} />
+                    <Route path = "/mindmap/:mindmapId" element = {<MindmapPage />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
