@@ -8,30 +8,30 @@
 }
 
 :root {
-  --bg-color-1: rgb(0, 0, 0);
-  --bg-color-2: green;
-  --bg-color-3: red;
-  --bg-color-4: gray;
+  --bg-color-1: #ffffff;
+  --bg-color-2: #e2e8f0;
+  --bg-color-3: #d1d5db;
+  --bg-color-4: #15803d;
 
-  --text-color-1: white;
-  --text-color-2: blue;
-  --text-color-3: gray;
-  --text-color-4: green;
+  --text-color-1: #111827;
+  --text-color-2: #1f2937;
+  --text-color-3: #3f3f46;
+  --text-color-4: #ffffff;
 }
 
-.bg-color-1 {
+.bg-1 {
   background: var(--bg-color-1)
 }
 
-.bg-color-2 {
+.bg-2 {
   background: var(--bg-color-2)
 }
 
-.bg-color-3 {
+.bg-3 {
   background: var(--bg-color-3)
 }
 
-.bg-color-4 {
+.bg-4 {
   background: var(--bg-color-4)
 }
 
@@ -56,3 +56,23 @@
   color: var(--text-color-1)
 }
 
+.btn-hover:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.header-btn-hover:hover {
+  background-color: rgb(238, 238, 238);
+  border-bottom: 2px solid green;
+}
+
+.home-bg-img {
+  background-image: url('https://img.freepik.com/free-vector/time-management-concept-illustration_114360-1013.jpg?t=st=1648756890~exp=1648757490~hmac=9c876e0067094fd02f14fa7a80390fd848573330a8ab99a5b7bf0d9f248dc696&w=996');
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

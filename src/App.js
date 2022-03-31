@@ -17,15 +17,15 @@ function App() {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path = "/" element = {<Home />} />
-                    <Route path = "/login" element = {<Login />} />
-                    <Route path = "/register" element = {<Register />} />
-                    <Route path = "/planning/:planningId" element = {<PlanningPage />} />
-                    <Route path = "/todo-list-board/:todoListBoardId" element = {<TodoListBoardPage />} />
-                    <Route path = "/dashboard" element = {<Dashboard />} />
-                    <Route path = "/profile" element = {<Profile />} />
-                    <Route path = "/settings" element = {<Settings />} />
-                    <Route path = "/mindmap/:mindmapId" element = {<MindmapPage />} />
+                    <Route path = "/" exact element = {<Home />} />
+                    <Route path = "/login" exact element = {<Login />} />
+                    <Route path = "/register" exact element = {<Register />} />
+                    <Route path = "/planning/:planningId" exact element = {<PlanningPage />} />
+                    <Route path = "/todo-list-board/:todoListBoardId" exact element = {<TodoListBoardPage />} />
+                    <Route path = "/dashboard" exact element = {<Dashboard />} />
+                    <Route path = "/profile" exact element = {<Profile />} />
+                    <Route path = "/settings" exact element = {<Settings />} />
+                    <Route path = "/mindmap/:mindmapId" exact element = {<MindmapPage />} />
                 </Routes>
             </BrowserRouter>
         </div>
