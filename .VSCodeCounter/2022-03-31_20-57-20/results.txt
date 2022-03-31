@@ -1,0 +1,40 @@
+Date : 2022-03-31 20:57:20
+Directory : c:\Users\me\Desktop\React\learning_projects\productivity-app\src
+Total : 13 files,  186 codes, 0 comments, 43 blanks, all 229 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         12 |        142 |          0 |         28 |        170 |
+| CSS        |          1 |         44 |          0 |         15 |         59 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                     | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                        |         13 |        186 |          0 |         43 |        229 |
+| pages                                                                                                    |          9 |         63 |          0 |         18 |         81 |
+| utility-components                                                                                       |          1 |         38 |          0 |          4 |         42 |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                 | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\App.css                                 | CSS        |         44 |          0 |         15 |         59 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\App.js                                  | JavaScript |         32 |          0 |          4 |         36 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\index.js                                | JavaScript |          9 |          0 |          2 |         11 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Dashboard.js                      | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Home.js                           | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Login.js                          | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\MindmapPage.js                    | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\PlanningPage.js                   | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Profile.js                        | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Register.js                       | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Settings.js                       | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\TodoListBoardPage.js              | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\utility-components\ChangeThemeButton.js | JavaScript |         38 |          0 |          4 |         42 |
+| Total                                                                                                    |            |        186 |          0 |         43 |        229 |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
