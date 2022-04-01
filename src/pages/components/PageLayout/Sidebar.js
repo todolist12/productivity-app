@@ -2,90 +2,94 @@ import { Avatar, Drawer } from '@mui/material'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import useWindowSize from '../../../hooks/useWindowSize'
+import SidebarItem from './SidebarItem';
 
-const Sidebar = ({drawerOpen, setDrawerOpen}) => {
-    const {width, height} = useWindowSize();
-    const sidebarElements = [
+const SidebarElement = () => {
+    const sidebarItems = [
         {
             name: 'Dashboard',
             icon: "home-outline",
             url: '/dashboard'
         }, 
         {
-            name: 'My Plans',
-            icon: "book-outline", 
-            url: '/my-plans'
-        },
-        {
-            name: 'My TodoLists',
-            icon: "list-outline",
+            name: 'Today',
+            icon: "calendar-number-outline",
             url: '/my-todolists'
         }, 
         {
-            name: 'My Mindmaps',
+            name: 'Upcoming',
+            icon: "calendar-outline",
+            url: '/my-todolists'
+        },
+        {
+            name: 'Plans',
+            icon: "list-outline", 
+            url: '/my-plans',
+            children: [
+                {
+                    name: 'Today',
+                    icon: "calendar-number-outline",
+                    url: '/my-todolists'
+                }, 
+                {
+                    name: 'Upcoming',
+                    icon: "calendar-outline",
+                    url: '/my-todolists'
+                },
+            ]
+        },
+        {
+            name: 'Mindmaps',
             icon: "git-branch-outline",
             url: '/my-todolists'
         }, 
         {
-            name: 'My Goals',
+            name: 'Goals',
             icon: "trophy-outline",
             url: '/my-todolists'
         }, 
         {
+            name: 'Timers',
+            icon: "alarm-outline",
+            url: '/my-todolists'
+        },
+        {
             name: 'Profile',
             icon: "person-outline",
             url: '/profile'
-        },
+        }, 
     ]
+
+    return (
+        <div className = "w-72 p-4 bg-1 text-color-1 pt-16 sticky h-full overflow-y-auto">
+            <div className = "flex flex-col items-center pb-10 pt-7">
+                <Avatar sx={{ width: 66, height: 66 }} />
+                <div className = "p-2 text-xl">Tilica Mihail</div>
+            </div>
+            <div>
+                {sidebarItems.map(item => {
+                    return (   
+                        <SidebarItem item = {item} key = {item.name}/>
+                    )
+                })}
+            </div>
+        </div> 
+    )
+}
+
+const Sidebar = ({drawerOpen, setDrawerOpen}) => {
+    const {width, height} = useWindowSize();
 
     if(width <= 800) {
         return (
             <Drawer open={drawerOpen} onClose={e => setDrawerOpen(false)}>
-                <div className = "w-56 h-screen p-4 bg-1 text-color-1 sticky">
-                    <div className = "flex items-center pb-10">
-                        <Avatar />
-                        <div className = "p-2 text-xl">Tilica Mihail</div>
-                    </div>
-                    <div>
-                        {sidebarElements.map(elem => {
-                            return (   
-                                <a href={elem.url} key = {elem.name} className = "flex items-center p-1 link link-sidebar rounded">
-                                    <div className = "p-1 text-xl">
-                                        <ion-icon name={elem.icon}></ion-icon>
-                                    </div>  
-                                    <div className = "p-1">
-                                        {elem.name}
-                                    </div>
-                                </a>
-                            )
-                        })}
-                    </div>
-                </div>
+                <SidebarElement />
             </Drawer>
         )
     } 
     else {
         return (
-            <div className = "w-56 p-4 bg-1 text-color-1 pt-16 fixed h-full">
-                <div className = "flex flex-col items-center pb-10 pt-7">
-                    <Avatar sx={{ width: 66, height: 66 }} />
-                    <div className = "p-2 text-xl">Tilica Mihail</div>
-                </div>
-                <div>
-                    {sidebarElements.map(elem => {
-                        return (   
-                            <Link to={elem.url} key = {elem.name} className = "flex items-center p-1 link link-sidebar rounded">
-                                <div className = "p-1 text-xl">
-                                    <ion-icon name={elem.icon}></ion-icon>
-                                </div>  
-                                <div className = "p-1">
-                                    {elem.name}
-                                </div>
-                            </Link>
-                        )
-                    })}
-                </div>
-            </div>
+            <SidebarElement />
         )
     }
 }

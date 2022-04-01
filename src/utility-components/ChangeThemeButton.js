@@ -1,7 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import useLocalStorage from '../hooks/UseLocalStorage'
 
 const ChangeThemeButton = () => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useLocalStorage('theme-color', 'light');
+
+    useEffect(() => {
+        if(theme === 'dark') {
+            document.documentElement.style.setProperty('--bg-color-1', themeColors.dark['bg-color-1'])
+            document.documentElement.style.setProperty('--bg-color-2', themeColors.dark['bg-color-2'])
+            document.documentElement.style.setProperty('--bg-color-3', themeColors.dark['bg-color-3'])
+            document.documentElement.style.setProperty('--bg-color-4', themeColors.dark['bg-color-4'])
+            document.documentElement.style.setProperty('--text-color-1', themeColors.dark['text-color-1'])
+            document.documentElement.style.setProperty('--text-color-2', themeColors.dark['text-color-2'])
+            document.documentElement.style.setProperty('--text-color-3', themeColors.dark['text-color-3'])
+        } else {
+            setTheme('light')
+            document.documentElement.style.setProperty('--bg-color-1', themeColors.light['bg-color-1'])
+            document.documentElement.style.setProperty('--bg-color-2', themeColors.light['bg-color-2'])
+            document.documentElement.style.setProperty('--bg-color-3', themeColors.light['bg-color-3'])
+            document.documentElement.style.setProperty('--bg-color-4', themeColors.light['bg-color-4'])
+            document.documentElement.style.setProperty('--text-color-1', themeColors.light['text-color-1'])
+            document.documentElement.style.setProperty('--text-color-2', themeColors.light['text-color-2'])
+            document.documentElement.style.setProperty('--text-color-3', themeColors.light['text-color-3'])
+        }
+    }, [])
 
     const themeColors = {
         dark: {
@@ -53,11 +75,11 @@ const ChangeThemeButton = () => {
                 {
                     theme === 'light' ?
                         <div className = "theme-btn flex items-center justify-center hover">
-                            <ion-icon name="sunny-outline"></ion-icon> 
+                            <ion-icon name="moon-outline"></ion-icon>
                         </div>
                     : 
                         <div className = "theme-btn flex items-center justify-center hover">
-                            <ion-icon name="moon-outline"></ion-icon>
+                            <ion-icon name="sunny-outline"></ion-icon> 
                         </div>
                 }
         </button>

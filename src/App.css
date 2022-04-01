@@ -91,3 +91,7 @@
   border-radius: 10px;
   background-color: var(--bg-color-2);
 }
+
+ion-icon {
+  color: var(--text-color-1)
+}

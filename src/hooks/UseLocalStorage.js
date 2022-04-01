@@ -5,7 +5,7 @@ const PREFIX = 'productivity-app-react-'
 const useLocalStorage = (key, initialValue) => {
     const prefixedKey = PREFIX + key;
     const [value, setValue] = useState(() => {
-        const jsonValue = sessionStorage.getItem(prefixedKey)
+        const jsonValue = localStorage.getItem(prefixedKey)
         if(!jsonValue) return initialValue
         if(jsonValue !== null && jsonValue !== undefined) return JSON.parse(jsonValue)
         if(typeof initialValue === 'function') {
@@ -17,7 +17,7 @@ const useLocalStorage = (key, initialValue) => {
     })
 
     useEffect(() => {
-        sessionStorage.setItem(prefixedKey, JSON.stringify(value))
+        localStorage.setItem(prefixedKey, JSON.stringify(value))
     }, [prefixedKey, value])
 
     return [value, setValue]

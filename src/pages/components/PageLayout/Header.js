@@ -18,7 +18,7 @@ const Header = ({drawerOpen, setDrawerOpen}) => {
                         TodoList
                     </div> 
                 </> :
-                <div className = "text-2xl font-bold pl-12">
+                <div className = "text-2xl font-bold pl-20">
                     TodoList
                 </div>}
                 

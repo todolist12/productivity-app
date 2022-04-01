@@ -6,12 +6,12 @@ const PageLayout = ({children}) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
-        <div className = "flex w-full">
+        <div className = "flex w-full overflow-x-hidden">
             <Header drawerOpen = {drawerOpen} setDrawerOpen = {setDrawerOpen}/>
             <div className = "flex w-full">
                 <Sidebar drawerOpen = {drawerOpen} setDrawerOpen = {setDrawerOpen}/>
                 <div className= 'min-h-screen bg-2 grow'>  
-                    <div className = 'mt-14 ml-56'>
+                    <div className = 'mt-14 ml-72'>
                         {children}
                     </div> 
                 </div>
