@@ -1,45 +1,53 @@
 import { Avatar, Drawer } from '@mui/material'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import useLocalStorage from '../../../hooks/UseLocalStorage';
 import useWindowSize from '../../../hooks/useWindowSize'
 import SidebarItem from './SidebarItem';
 
 const SidebarElement = () => {
-    const sidebarItems = [
-        {
+    const [sidebarItems, setSidebarItems] = useLocalStorage('sidebar-items', {
+        dashboard: {
             name: 'Dashboard',
             icon: "home-outline",
-            url: '/dashboard'
+            url: '/dashboard',
+            id: 'dashboard',
         }, 
-        {
+        today: {
             name: 'Today',
             icon: "sunny-outline",
-            url: '/my-todolists'
+            url: '/my-todolists',
+            id: 'today',
         }, 
-        {
+        upcoming: {
             name: 'Upcoming',
             icon: "calendar-outline",
-            url: '/my-todolists'
+            url: '/my-todolists',
+            id: 'upcoming',
         },
-        {
+        goals: {
             name: 'Goals',
             icon: "trophy-outline",
-            url: '/my-todolists'
+            url: '/my-todolists',
+            id: 'goals',
         }, 
-        {
+        timers: {
             name: 'Timers',
             icon: "alarm-outline",
-            url: '/my-todolists'
+            url: '/my-todolists',
+            id: 'timers',
         },
-        {
+        profile: {
             name: 'Profile',
             icon: "person-outline",
-            url: '/profile'
+            url: '/profile',
+            id: 'profile',
         }, 
-        {
+        plans: {
             name: 'Plans',
             icon: "list-outline", 
             url: '/my-plans',
+            id: 'plans',
             children: [
                 {
                     name: 'Today',
@@ -54,10 +62,11 @@ const SidebarElement = () => {
             ],
             addChildren: true,
         },
-        {
+        mindmaps: {
             name: 'Mindmaps',
             icon: "git-branch-outline",
             url: '/my-todolists',
+            id: 'mindmaps',
             children: [
                 {
                     name: 'Today',
@@ -72,10 +81,11 @@ const SidebarElement = () => {
             ],
             addChildren: true,
         }, 
-        {
+        projects: {
             name: 'Projects',
             icon: "git-branch-outline",
             url: '/my-todolists',
+            id: 'project',
             children: [
                 {
                     name: 'Today',
@@ -90,7 +100,7 @@ const SidebarElement = () => {
             ], 
             addChildren: true,
         }, 
-    ]
+    });
 
     return (
         <div className = "w-72 p-4 bg-1 text-color-1 pt-16 sticky h-full overflow-y-auto">
@@ -99,9 +109,9 @@ const SidebarElement = () => {
                 <div className = "p-2 text-xl">Tilica Mihail</div>
             </div>
             <div>
-                {sidebarItems.map(item => {
+                {Object.values(sidebarItems).map(item => {
                     return (   
-                        <SidebarItem item = {item} key = {item.name}/>
+                        <SidebarItem item = {item} key = {item.name} setSidebarItems = {setSidebarItems}/>
                     )
                 })}
             </div>

@@ -96,3 +96,7 @@
 ion-icon {
   color: var(--text-color-1)
 }
+
+.transition-sidebar-item {
+  transition: 1s;
+}
