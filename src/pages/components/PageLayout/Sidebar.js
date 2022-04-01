@@ -13,7 +13,7 @@ const SidebarElement = () => {
         }, 
         {
             name: 'Today',
-            icon: "calendar-number-outline",
+            icon: "sunny-outline",
             url: '/my-todolists'
         }, 
         {
@@ -31,11 +31,6 @@ const SidebarElement = () => {
             icon: "alarm-outline",
             url: '/my-todolists'
         },
-        {
-            name: 'Profile',
-            icon: "person-outline",
-            url: '/profile'
-        }, 
         {
             name: 'Plans',
             icon: "list-outline", 
@@ -94,10 +89,10 @@ const SidebarElement = () => {
 
     return (
         <div className = "w-72 p-4 bg-1 text-color-1 pt-16 sticky h-full overflow-y-auto">
-            <div className = "flex flex-col items-center pb-10 pt-7">
+            <Link  to = "/profile" className = "flex flex-col items-center pb-10 pt-7">
                 <Avatar sx={{ width: 66, height: 66 }} />
                 <div className = "p-2 text-xl">Tilica Mihail</div>
-            </div>
+            </Link>
             <div>
                 {sidebarItems.map(item => {
                     return (   

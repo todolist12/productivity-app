@@ -90,6 +90,7 @@
   transform: scale(1.01);
   border-radius: 10px;
   background-color: var(--bg-color-2);
+  transition: 0.3s;
 }
 
 ion-icon {
