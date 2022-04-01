@@ -22,6 +22,21 @@ const SidebarElement = () => {
             url: '/my-todolists'
         },
         {
+            name: 'Goals',
+            icon: "trophy-outline",
+            url: '/my-todolists'
+        }, 
+        {
+            name: 'Timers',
+            icon: "alarm-outline",
+            url: '/my-todolists'
+        },
+        {
+            name: 'Profile',
+            icon: "person-outline",
+            url: '/profile'
+        }, 
+        {
             name: 'Plans',
             icon: "list-outline", 
             url: '/my-plans',
@@ -36,27 +51,44 @@ const SidebarElement = () => {
                     icon: "calendar-outline",
                     url: '/my-todolists'
                 },
-            ]
+            ],
+            addChildren: true,
         },
         {
             name: 'Mindmaps',
             icon: "git-branch-outline",
-            url: '/my-todolists'
+            url: '/my-todolists',
+            children: [
+                {
+                    name: 'Today',
+                    icon: "calendar-number-outline",
+                    url: '/my-todolists'
+                }, 
+                {
+                    name: 'Upcoming',
+                    icon: "calendar-outline",
+                    url: '/my-todolists'
+                },
+            ],
+            addChildren: true,
         }, 
         {
-            name: 'Goals',
-            icon: "trophy-outline",
-            url: '/my-todolists'
-        }, 
-        {
-            name: 'Timers',
-            icon: "alarm-outline",
-            url: '/my-todolists'
-        },
-        {
-            name: 'Profile',
-            icon: "person-outline",
-            url: '/profile'
+            name: 'Projects',
+            icon: "git-branch-outline",
+            url: '/my-todolists',
+            children: [
+                {
+                    name: 'Today',
+                    icon: "calendar-number-outline",
+                    url: '/my-todolists'
+                }, 
+                {
+                    name: 'Upcoming',
+                    icon: "calendar-outline",
+                    url: '/my-todolists'
+                },
+            ], 
+            addChildren: true,
         }, 
     ]
 
