@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { auth } from '../firebase-config'
+import { auth, db } from '../firebase-config'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { setDoc, doc } from 'firebase/firestore'
 
 const Register = () => {
     const [registerEmail, setRegisterEmail] = useState('');
@@ -11,30 +12,25 @@ const Register = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    // const createUserDoc = async (uid) => {
-    //     const newUserRef = doc(db, `users/${uid}`)
-    //     let status = "student"
-    //     if(profesorInput) {
-    //         status = "profesor"
-    //     }
-    //     const docData = {
-    //         status: status,
-    //         name: registerUsername, 
-    //         credite: Number(0),
-    //         proiecte: Number(0),
-    //         email: registerEmail, 
-    //         inscrisProiecte: {},
-    //         creatProiecte: {}
-    //     }
-    //     try{
-    //         const doc = await setDoc(newUserRef, docData, {merge: true})
-    //         console.log(doc)
-    //         navigate('/dashboard')
-    //         window.location.reload(false)
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     }
-    // }
+    const createUserDoc = async ( uid ) => {
+        const newUserRef = doc(db, `users/${uid}`)
+        const docData = {
+            name: registerUsername,
+            email: registerEmail,
+            todoLists: {},
+            mindMaps: {},
+            todoListBoards: {},
+            plans: {},
+            id: uid,
+        }
+        try {
+            await setDoc(newUserRef, docData, {merge: true})
+            navigate('/dashboard')
+            window.location.reload(false)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     const register = async (e) => {
         e.preventDefault();
@@ -45,8 +41,7 @@ const Register = () => {
                 registerEmail, 
                 registerPassword
             );
-            navigate('/dashboard')
-            window.location.reload(false)
+            createUserDoc(user.user.uid)
             }
             catch (error) {
                 setError(error.message);
