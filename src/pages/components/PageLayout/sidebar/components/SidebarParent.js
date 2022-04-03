@@ -9,7 +9,7 @@ import AddChildModal from './AddChildModal';
 const SidebarParent = ({ item, setSidebarItems }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser, setCurrentUser } = useContext(AuthContext)
 
     const handleToggleDrawer = () => {
         setDrawerOpen(prev => !prev);
@@ -32,6 +32,7 @@ const SidebarParent = ({ item, setSidebarItems }) => {
             }
             setDoc(docRef, docData)
             setSidebarItems(prev => ({...prev, [item.id] : {...item, children: [...item.children, {...docData}]}}))
+            setCurrentUser(prev => ({...prev, [section.toLowerCase()] : {...currentUser[section.toLowerCase()], [uid]: docData}}))
         } 
         catch(err) {
             console.log(err)

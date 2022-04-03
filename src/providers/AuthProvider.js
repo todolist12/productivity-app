@@ -13,10 +13,11 @@ const AuthProvider = ({ children }) => {
     const readDocument = async (uid) => {
         try {
             const userDocRef = doc(db, `users/${uid}`);
+
             const plansCollectionsRef = collection(db, `users/${uid}/plans`)
             const plansQuery = query(plansCollectionsRef)
-
             const plansSnaphot = await getDocs(plansQuery);
+
             const mindmapsCollectionsRef = collection(db, `users/${uid}/mindmaps`)
             const mindmapsQuery = query(mindmapsCollectionsRef)
             const mindmapsSnaphot = await getDocs(mindmapsQuery);
@@ -41,6 +42,7 @@ const AuthProvider = ({ children }) => {
 
             projectsSnaphot.forEach(project => {
                 projectsObjects = {...projectsObjects, [project.id]: project.data()}
+                // console.log(project.id)
             })
 
             if(userDocSnapshot.exists()) {
@@ -48,6 +50,7 @@ const AuthProvider = ({ children }) => {
                 setCurrentUser(docData);
                 setLoading(false);
             }
+            // console.log(currentUser)
         } 
         catch (err) {
             console.log(err.message)
