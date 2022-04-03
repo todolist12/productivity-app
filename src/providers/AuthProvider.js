@@ -4,7 +4,7 @@ import { db, auth } from '../firebase-config';
 import useLocalStorage from '../hooks/UseLocalStorage';
 import { onAuthStateChanged } from 'firebase/auth';
 
-const AuthContext = React.createContext({})
+export const AuthContext = React.createContext({})
 
 const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useLocalStorage('currentUser',{});

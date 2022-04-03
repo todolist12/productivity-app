@@ -7,34 +7,28 @@ import SidebarItem from './SidebarItem';
 
 const SidebarElement = () => {
     const [sidebarItems, setSidebarItems] = useLocalStorage('sidebar-items', {
-        dashboard: {
-            name: 'Dashboard',
-            icon: "home-outline",
-            url: '/dashboard',
-            id: 'dashboard',
-        }, 
         today: {
             name: 'Today',
             icon: "sunny-outline",
-            url: '/my-todolists',
+            url: '/today',
             id: 'today',
         }, 
         upcoming: {
             name: 'Upcoming',
             icon: "calendar-outline",
-            url: '/my-todolists',
+            url: '/upcoming',
             id: 'upcoming',
         },
         goals: {
             name: 'Goals',
             icon: "trophy-outline",
-            url: '/my-todolists',
+            url: '/goals',
             id: 'goals',
         }, 
         timers: {
             name: 'Timers',
             icon: "alarm-outline",
-            url: '/my-todolists',
+            url: '/timers',
             id: 'timers',
         },
         profile: {
@@ -46,7 +40,7 @@ const SidebarElement = () => {
         plans: {
             name: 'Plans',
             icon: "list-outline", 
-            url: '/my-plans',
+            url: '/plans',
             id: 'plans',
             children: [
                 {
@@ -65,7 +59,7 @@ const SidebarElement = () => {
         mindmaps: {
             name: 'Mindmaps',
             icon: "git-branch-outline",
-            url: '/my-todolists',
+            url: '/mindmaps',
             id: 'mindmaps',
             children: [
                 {
@@ -84,7 +78,7 @@ const SidebarElement = () => {
         projects: {
             name: 'Projects',
             icon: "git-branch-outline",
-            url: '/my-todolists',
+            url: '/projects',
             id: 'project',
             children: [
                 {
@@ -103,7 +97,7 @@ const SidebarElement = () => {
     });
 
     return (
-        <div className = "w-72 p-4 bg-1 text-color-1 pt-16 sticky h-full overflow-y-auto">
+        <div className = "w-72 p-4 bg-1 text-color-1 pt-16 sticky h-full overflow-y-auto max-h-screen">
             <div className = "flex flex-col items-center pb-10 pt-7">
                 <Avatar sx={{ width: 66, height: 66 }} />
                 <div className = "p-2 text-xl">Tilica Mihail</div>
