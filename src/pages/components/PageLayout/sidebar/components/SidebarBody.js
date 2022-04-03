@@ -10,7 +10,7 @@ const SidebarBody = () => {
     const [sidebarItems, setSidebarItems] = useState({
         today: {
             name: 'Today',
-            icon: '<ion-icon name="sunny"></ion-icon>',
+            icon: '<ion-icon name="sunny-outline"></ion-icon>',
             url: '/today',
             id: 'today',
         }, 
@@ -72,7 +72,7 @@ const SidebarBody = () => {
             <div>
                 {Object.values(sidebarItems).map(item => {
                     return (   
-                        <SidebarItem item = {item} key = {item.name} setSidebarItems = {setSidebarItems}/>
+                        <SidebarItem item = {item} key = {item.id} setSidebarItems = {setSidebarItems}/>
                     )
                 })}
             </div>

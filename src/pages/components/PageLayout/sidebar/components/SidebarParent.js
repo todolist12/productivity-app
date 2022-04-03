@@ -1,34 +1,46 @@
 import React, { useContext, useState } from 'react'
 import SidebarItem from './SidebarItem';
-import { addDoc, collection, doc } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../../../../firebase-config';
 import { createUid } from '../../../../../utils/functions';
 import { AuthContext } from '../../../../../providers/AuthProvider'
+import AddChildModal from './AddChildModal';
 
 const SidebarParent = ({ item, setSidebarItems }) => {
-    const [drawerOpen, setDrawerOpen] = useState();
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     const { currentUser } = useContext(AuthContext)
 
     const handleToggleDrawer = () => {
         setDrawerOpen(prev => !prev);
     }
 
-    const handleAddChild = (section) => {
-        setDrawerOpen(false);
+    const handleAddChild = (e, section, name, color, board) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setDrawerOpen(true);
         try {
             const uid = createUid()
-            const collectionRef = collection(db, `users/${currentUser.id}/${section.toLowerCase()}`)
+            const docRef = doc(db, `users/${currentUser.id}/${section.toLowerCase()}/${uid}`)
             const docData = {
-                name: uid.slice(0, 5),
-                url: '/profile',
+                name: name,
+                url: `/plans/${uid}`,
                 icon: '<ion-icon name="ellipse"></ion-icon>',
+                id: uid,
+                color: color,
+                board: Boolean(board)
             }
-            addDoc(collectionRef, docData)
+            setDoc(docRef, docData)
             setSidebarItems(prev => ({...prev, [item.id] : {...item, children: [...item.children, {...docData}]}}))
         } 
         catch(err) {
             console.log(err)
         }
+    }
+
+    const handleOpenModal = (e) => {
+        e.stopPropagation()
+        setModalOpen(true)
     }
 
     return (
@@ -44,9 +56,12 @@ const SidebarParent = ({ item, setSidebarItems }) => {
                 </div>
                 {
                     item.addChildren ?
-                        <button className = {`p-1 text-lg flex items-center hover`} onClick={e => handleAddChild(item.name)}>
-                            <ion-icon name="add-outline"></ion-icon>
-                        </button>
+                        <div className = 'flex'>
+                            <button className = {`p-1 text-lg flex items-center hover`} onClick={handleOpenModal}>
+                                <ion-icon name="add-outline"></ion-icon>
+                            </button>
+                            <AddChildModal modalOpen={modalOpen} setModalOpen={setModalOpen} section = {item} handleAddChild = {handleAddChild} />
+                        </div>
                     : undefined
                 }
             </div> 
@@ -56,8 +71,8 @@ const SidebarParent = ({ item, setSidebarItems }) => {
                         {
                             item.children.map(child => {
                                 return (
-                                    <div key = {child.name} >
-                                        <SidebarItem item = {child}/>
+                                    <div key = {child.id} >
+                                        <SidebarItem item = {child} color = {child.color}/>
                                     </div>
                                 );
                             })
