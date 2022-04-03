@@ -3,12 +3,12 @@ import HomeHeader from './components/HomeHeader'
 
 const Home = () => {
     return (
-        <div className='flex min-h-screen bg-1 flex-col'>
+        <div className='flex min-h-screen bg-white flex-col'>
             <div className = "flex w-full fixed z-0">
                 <HomeHeader />
             </div>
             <div className='home-bg-img w-screen h-screen flex items-center justify-center'>
-                <div className = "p-3 max-w-lg text-center bg-1 rounded-xl shadow">
+                <div className = "p-3 max-w-lg text-center bg-white rounded-xl shadow">
                     <div className = "text-5xl font-bold">
                         Organize it all with TodoList
                     </div>

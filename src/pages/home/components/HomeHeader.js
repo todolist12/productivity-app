@@ -1,10 +1,10 @@
 import React from 'react'
-import ChangeThemeButton from '../../utility-components/ChangeThemeButton'
+import ChangeThemeButton from '../../../utility-components/ChangeThemeButton'
 
 const HomeHeader = () => {
     return (
-        <div className = "h-14 flex-grow bg-1 flex items-center justify-between">
-            <div className = 'text-3xl font-bold text-color-1 p-2 pl-3'>
+        <div className = "h-14 flex-grow bg-white flex items-center justify-between">
+            <div className = 'text-3xl font-bold text-black p-2 pl-3'>
                 TodoList
             </div>
             <div className = "flex items-center">

@@ -1,17 +1,17 @@
 import './App.css';
 import React, { useState, useContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import TodoListBoardPage from './pages/TodoListBoardPage';
-import PlanningPage from './pages/PlanningPage';
-import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import MindmapPage from './pages/MindmapPage';
+import Home from './pages/home/Home';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
+import TodoListBoardPage from './pages/boards/TodoListBoardPage';
+import PlanningPage from './pages/plans/PlanningPage';
+import Dashboard from './pages/dashboard/Dashboard';
+import Profile from './pages/profile/Profile';
+import Settings from './pages/settings/Settings';
+import MindmapPage from './pages/mindmaps/MindmapPage';
 import { auth } from './firebase-config';
-import TodayPage from './pages/TodayPage';
+import TodayPage from './pages/today/TodayPage';
 import Redirect from './pages/Redirect';
 import { AuthContext } from './providers/AuthProvider';
 

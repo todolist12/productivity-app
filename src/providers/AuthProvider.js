@@ -25,6 +25,9 @@ const AuthProvider = ({ children }) => {
             if(currentUser){
                 readDocument(currentUser.uid);
             }
+            else {
+                setCurrentUser(null)
+            }
         })  
     }, [])
 

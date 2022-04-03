@@ -2,6 +2,7 @@ import { Menu } from '@mui/icons-material'
 import React from 'react'
 import useWindowSize from '../../../hooks/useWindowSize'
 import ChangeThemeButton from '../../../utility-components/ChangeThemeButton'
+import LogoutButton from '../../../utility-components/LogoutButton'
 
 const Header = ({drawerOpen, setDrawerOpen}) => {
     const {width, height} = useWindowSize();
@@ -23,8 +24,9 @@ const Header = ({drawerOpen, setDrawerOpen}) => {
                 </div>}
                 
             </div>
-            <div>
+            <div className = 'flex items-center'>
                 <ChangeThemeButton />
+                <LogoutButton />
             </div>
         </div>
     )
