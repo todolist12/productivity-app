@@ -1,5 +1,5 @@
 import React from 'react'
-import ChangeThemeButton from '../../../utility-components/ChangeThemeButton'
+import ChangeThemeButton from '../../components/ChangeThemeButton'
 
 const HomeHeader = () => {
     return (

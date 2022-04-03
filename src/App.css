@@ -52,7 +52,7 @@
   color: var(--text-color-4);
 }
 
-.theme-btn ion-icon {
+.header-btn ion-icon {
   color: white;
 }
 
@@ -93,10 +93,16 @@
   transition: 0.3s;
 }
 
-ion-icon {
-  color: var(--text-color-1)
+.parenttrue ion-icon {
+  transform: rotate(90deg);
+  transition: 0.3s;
 }
 
-.transition-sidebar-item {
-  transition: 1s;
+.parentfalse ion-icon {
+  transform: rotate(0deg);
+  transition: 0.3s;
+}
+
+ion-icon {
+  color: var(--text-color-1)
 }

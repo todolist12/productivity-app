@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import useLocalStorage from '../hooks/UseLocalStorage'
+import useLocalStorage from '../../hooks/UseLocalStorage'
 
 const ChangeThemeButton = () => {
     const [theme, setTheme] = useLocalStorage('theme-color', 'light');
@@ -74,11 +74,11 @@ const ChangeThemeButton = () => {
         <button className = "p-0 m-3 border-0 text-2xl" onClick = {handleChangeTheme}>
                 {
                     theme === 'light' ?
-                        <div className = "theme-btn flex items-center justify-center hover">
+                        <div className = "header-btn flex items-center justify-center hover">
                             <ion-icon name="moon-outline"></ion-icon>
                         </div>
                     : 
-                        <div className = "theme-btn flex items-center justify-center hover">
+                        <div className = "header-btn flex items-center justify-center hover">
                             <ion-icon name="sunny-outline"></ion-icon> 
                         </div>
                 }

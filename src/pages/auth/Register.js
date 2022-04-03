@@ -17,9 +17,8 @@ const Register = () => {
         const docData = {
             name: registerUsername,
             email: registerEmail,
-            todoLists: {},
-            mindMaps: {},
-            todoListBoards: {},
+            mindmaps: {},
+            boards: {},
             plans: {},
             id: uid,
         }

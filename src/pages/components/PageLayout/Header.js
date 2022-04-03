@@ -1,8 +1,8 @@
 import { Menu } from '@mui/icons-material'
 import React from 'react'
 import useWindowSize from '../../../hooks/useWindowSize'
-import ChangeThemeButton from '../../../utility-components/ChangeThemeButton'
-import LogoutButton from '../../../utility-components/LogoutButton'
+import ChangeThemeButton from '../ChangeThemeButton'
+import LogoutButton from '../LogoutButton'
 
 const Header = ({drawerOpen, setDrawerOpen}) => {
     const {width, height} = useWindowSize();

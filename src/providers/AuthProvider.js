@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 import useLocalStorage from '../hooks/UseLocalStorage';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -11,12 +11,46 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const readDocument = async (uid) => {
-        const ref = doc(db, `users/${uid}`)
-        const mySnapshot = await getDoc(ref);
-        if(mySnapshot.exists()) {
-            const docData = {...mySnapshot.data(), id: uid};
-            setCurrentUser(docData);
-            setLoading(false);
+        try {
+            const userDocRef = doc(db, `users/${uid}`);
+            const plansCollectionsRef = collection(db, `users/${uid}/plans`)
+            const plansQuery = query(plansCollectionsRef)
+
+            const plansSnaphot = await getDocs(plansQuery);
+            const mindmapsCollectionsRef = collection(db, `users/${uid}/mindmaps`)
+            const mindmapsQuery = query(mindmapsCollectionsRef)
+            const mindmapsSnaphot = await getDocs(mindmapsQuery);
+
+            const projectsCollectionsRef = collection(db, `users/${uid}/projects`)
+            const projectsQuery = query(projectsCollectionsRef)
+            const projectsSnaphot = await getDocs(projectsQuery);
+
+            const userDocSnapshot = await getDoc(userDocRef);
+
+            let plansObjects = {};
+            let mindmapsObjects = {};
+            let projectsObjects = {};
+
+            plansSnaphot.forEach(plan => {
+                plansObjects = {...plansObjects, [plan.id]: plan.data()}
+            })
+
+            mindmapsSnaphot.forEach(mindmap => {
+                mindmapsObjects = {...mindmapsObjects, [mindmap.id]: mindmap.data()}
+            })
+
+            projectsSnaphot.forEach(project => {
+                projectsObjects = {...projectsObjects, [project.id]: project.data()}
+            })
+
+            if(userDocSnapshot.exists()) {
+                const docData = {...userDocSnapshot.data(), id: uid, plans: plansObjects, projects: projectsObjects, mindmaps: mindmapsObjects};
+                setCurrentUser(docData);
+                setLoading(false);
+            }
+        } 
+        catch (err) {
+            console.log(err.message)
         }
     }
 

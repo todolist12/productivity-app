@@ -1,0 +1,92 @@
+Date : 2022-04-03 15:08:53
+Directory : c:\Users\me\Desktop\React\learning_projects\productivity-app\src
+Total : 46 files,  52 codes, 0 comments, 15 blanks, all 67 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         45 |         55 |          0 |         16 |         71 |
+| CSS        |          1 |         -3 |          0 |         -1 |         -4 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                             | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                |         46 |         52 |          0 |         15 |         67 |
+| pages                                                                                                                            |         42 |        133 |          0 |         22 |        155 |
+| pages\auth                                                                                                                       |          2 |        111 |          0 |          9 |        120 |
+| pages\boards                                                                                                                     |          1 |          7 |          0 |          2 |          9 |
+| pages\components                                                                                                                 |         11 |        103 |          0 |         16 |        119 |
+| pages\components\PageLayout                                                                                                      |          8 |         23 |          0 |          7 |         30 |
+| pages\components\PageLayout\sidebar                                                                                              |          5 |        213 |          0 |         17 |        230 |
+| pages\components\PageLayout\sidebar\components                                                                                   |          4 |        193 |          0 |         14 |        207 |
+| pages\dashboard                                                                                                                  |          1 |         16 |          0 |          4 |         20 |
+| pages\goals                                                                                                                      |          1 |          7 |          0 |          2 |          9 |
+| pages\home                                                                                                                       |          2 |         50 |          0 |          4 |         54 |
+| pages\home\components                                                                                                            |          1 |         23 |          0 |          2 |         25 |
+| pages\mindmaps                                                                                                                   |          1 |          7 |          0 |          2 |          9 |
+| pages\plans                                                                                                                      |          1 |          7 |          0 |          2 |          9 |
+| pages\profile                                                                                                                    |          1 |          7 |          0 |          2 |          9 |
+| pages\projects                                                                                                                   |          1 |          7 |          0 |          2 |          9 |
+| pages\settings                                                                                                                   |          1 |          7 |          0 |          2 |          9 |
+| pages\timers                                                                                                                     |          1 |          7 |          0 |          2 |          9 |
+| pages\today                                                                                                                      |          1 |          7 |          0 |          2 |          9 |
+| pages\upcoming                                                                                                                   |          1 |          7 |          0 |          2 |          9 |
+| providers                                                                                                                        |          1 |          3 |          0 |          0 |          3 |
+| utility-components                                                                                                               |          1 |        -83 |          0 |         -6 |        -89 |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                         | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\App.css                                                         | CSS        |         -3 |          0 |         -1 |         -4 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\App.js                                                          | JavaScript |          2 |          0 |          0 |          2 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Dashboard.js                                              | JavaScript |        -13 |          0 |         -3 |        -16 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\GoalsPage.js                                              | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Home.js                                                   | JavaScript |        -27 |          0 |         -2 |        -29 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Login.js                                                  | JavaScript |        -45 |          0 |         -4 |        -49 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\MindmapPage.js                                            | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\NotFound.js                                               | JavaScript |        -16 |          0 |         -2 |        -18 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\PlanningPage.js                                           | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Profile.js                                                | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\ProjectsPage.js                                           | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Redirect.js                                               | JavaScript |         20 |          0 |          5 |         25 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Register.js                                               | JavaScript |        -66 |          0 |         -5 |        -71 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\Settings.js                                               | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\TimersPage.js                                             | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\TodayPage.js                                              | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\TodoListBoardPage.js                                      | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\UpcomingPage.js                                           | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\auth\Login.js                                             | JavaScript |         45 |          0 |          4 |         49 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\auth\Register.js                                          | JavaScript |         66 |          0 |          5 |         71 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\boards\TodoListBoardPage.js                               | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\ChangeThemeButton.js                           | JavaScript |         83 |          0 |          6 |         89 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\HomeHeader.js                                  | JavaScript |        -23 |          0 |         -2 |        -25 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\LogoutButton.js                                | JavaScript |         20 |          0 |          5 |         25 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\Header.js                           | JavaScript |          2 |          0 |          0 |          2 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\Sidebar.js                          | JavaScript |       -128 |          0 |         -5 |       -133 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\SidebarItem.js                      | JavaScript |        -64 |          0 |         -5 |        -69 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\sidebar\Sidebar.js                  | JavaScript |         20 |          0 |          3 |         23 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\sidebar\components\SidebarBody.js   | JavaScript |        111 |          0 |          3 |        114 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\sidebar\components\SidebarItem.js   | JavaScript |         19 |          0 |          3 |         22 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\sidebar\components\SidebarLink.js   | JavaScript |         15 |          0 |          2 |         17 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\components\PageLayout\sidebar\components\SidebarParent.js | JavaScript |         48 |          0 |          6 |         54 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\dashboard\Dashboard.js                                    | JavaScript |         16 |          0 |          4 |         20 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\goals\GoalsPage.js                                        | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\home\Home.js                                              | JavaScript |         27 |          0 |          2 |         29 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\home\components\HomeHeader.js                             | JavaScript |         23 |          0 |          2 |         25 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\mindmaps\MindmapPage.js                                   | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\plans\PlanningPage.js                                     | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\profile\Profile.js                                        | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\projects\ProjectsPage.js                                  | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\settings\Settings.js                                      | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\timers\TimersPage.js                                      | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\today\TodayPage.js                                        | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\pages\upcoming\UpcomingPage.js                                  | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\providers\AuthProvider.js                                       | JavaScript |          3 |          0 |          0 |          3 |
+| c:\Users\me\Desktop\React\learning_projects\productivity-app\src\utility-components\ChangeThemeButton.js                         | JavaScript |        -83 |          0 |         -6 |        -89 |
+| Total                                                                                                                            |            |         52 |          0 |         15 |         67 |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

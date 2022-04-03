@@ -5,7 +5,6 @@ import { AuthContext } from '../../providers/AuthProvider'
 
 const Dashboard = () => {
     const { currentUser } = useContext(AuthContext)
-    console.log(auth.currentUser, ' 1 ', currentUser)
 
     return (
         <div>

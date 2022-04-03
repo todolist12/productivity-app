@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from './Header'
-import Sidebar from './Sidebar'
+import Sidebar from './sidebar/Sidebar'
 
 const PageLayout = ({children}) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
