@@ -1,9 +1,12 @@
 import React from 'react'
+import PageLayout from '../components/PageLayout/PageLayout'
 
 const Settings = () => {
-  return (
-    <div>Settings</div>
-  )
+    return (
+        <PageLayout>
+            Settings
+        </PageLayout>
+    )
 }
 
 export default Settings

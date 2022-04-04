@@ -1,9 +1,12 @@
 import React from 'react'
+import PageLayout from '../components/PageLayout/PageLayout'
 
 const TodayPage = () => {
-  return (
-    <div>TodayPage</div>
-  )
+    return (
+        <PageLayout>
+            Today
+        </PageLayout>
+    )
 }
 
 export default TodayPage

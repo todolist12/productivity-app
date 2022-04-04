@@ -1,9 +1,12 @@
 import React from 'react'
+import PageLayout from '../components/PageLayout/PageLayout'
 
 const ProjectsPage = () => {
-  return (
-    <div>ProjectsPage</div>
-  )
+    return (
+        <PageLayout>
+            ProjectsPage
+        </PageLayout>
+    )
 }
 
 export default ProjectsPage

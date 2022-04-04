@@ -1,9 +1,12 @@
 import React from 'react'
+import PageLayout from '../components/PageLayout/PageLayout'
 
 const UpcomingPage = () => {
-  return (
-    <div>UpcomingPage</div>
-  )
+    return (
+        <PageLayout>
+            UpcomingPage
+        </PageLayout>
+    )
 }
 
 export default UpcomingPage

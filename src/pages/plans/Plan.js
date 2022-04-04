@@ -1,12 +1,13 @@
 import React from 'react'
 import PageLayout from '../components/PageLayout/PageLayout'
 
-const GoalsPage = () => {
+const Plan = () => {
+
     return (
         <PageLayout>
-            GoalsPage
+            MindmapPage
         </PageLayout>
-    )
+    )    
 }
 
-export default GoalsPage
+export default Plan

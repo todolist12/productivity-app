@@ -5,7 +5,7 @@ import Home from './pages/home/Home';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import TodoListBoardPage from './pages/boards/TodoListBoardPage';
-import PlanningPage from './pages/plans/PlanningPage';
+import Plan from './pages/plans/Plan';
 import Dashboard from './pages/dashboard/Dashboard';
 import Profile from './pages/profile/Profile';
 import Settings from './pages/settings/Settings';
@@ -14,6 +14,9 @@ import { auth } from './firebase-config';
 import TodayPage from './pages/today/TodayPage';
 import Redirect from './pages/Redirect';
 import { AuthContext } from './providers/AuthProvider';
+import UpcomingPage from './pages/upcoming/UpcomingPage';
+import GoalsPage from './pages/goals/GoalsPage';
+import TimersPage from './pages/timers/TimersPage';
 
 function App() {
     const { currentUser } = useContext(AuthContext)
@@ -32,13 +35,16 @@ function App() {
                             </>
                         : 
                             <>
-                                <Route path = "/planning/:planningId" exact element = {<PlanningPage />} />
+                                <Route path = "/plan/:planningId" exact element = {<Plan />} />
                                 <Route path = "/todo-list-board/:todoListBoardId" exact element = {<TodoListBoardPage />} />
                                 <Route path = "/dashboard" exact element = {<Dashboard />} />
                                 <Route path = "/profile" exact element = {<Profile />} />
                                 <Route path = "/settings" exact element = {<Settings />} />
                                 <Route path = "/mindmap/:mindmapId" exact element = {<MindmapPage />} />
+                                <Route path = "/upcoming" exact element = {<UpcomingPage />} />
+                                <Route path = "/goals" exact element = {<GoalsPage />} />
                                 <Route path = "/today" exact element = {<TodayPage />} />
+                                <Route path = "/timers" exact element = {<TimersPage />} />
                             </>
                     }
                     <Route path = '*' element = {<Redirect />} />
