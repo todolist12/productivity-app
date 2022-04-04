@@ -24,7 +24,7 @@ const SidebarParent = ({ item, setSidebarItems }) => {
             const docRef = doc(db, `users/${currentUser.id}/${section.toLowerCase()}/${uid}`)
             const docData = {
                 name: name,
-                url: `/plans/${uid}`,
+                url: `/plan/${uid}`,
                 icon: '<ion-icon name="ellipse"></ion-icon>',
                 id: uid,
                 color: color,
