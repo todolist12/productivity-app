@@ -18,7 +18,7 @@ const PlanProvider = ({ children }) => {
                 setPlanLoading(false);
             }
         }
-    }, [currentUser])
+    }, [currentUser, planId])
 
     return (
         <PlanContext.Provider className = 'w-full h-full' value = {{plan, setPlan, planLoading}}>

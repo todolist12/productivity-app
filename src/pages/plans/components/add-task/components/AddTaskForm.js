@@ -6,12 +6,13 @@ import { PlanContext } from '../../../../../providers/PlanProvider';
 import { classes } from '../../../../../utils/classes'
 import { createUid } from '../../../../../utils/functions';
 import Box from '../../../../components/Box';
+import TasksList from '../../TasksList';
 
 const AddTaskForm = ({ setFormOpen }) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const { currentUser } = useContext(AuthContext)
-    const { plan } = useContext(PlanContext)
+    const { plan, setPlan } = useContext(PlanContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,12 +24,18 @@ const AddTaskForm = ({ setFormOpen }) => {
                 [path] : {
                     name: name,
                     description: description,
+                    id: taskId,
                 }
             }
             await updateDoc(docRef, docData);
             setName('');
             setDescription('');
             setFormOpen(false)
+            setPlan(prev => ({...prev, tasks: {...prev.tasks, [taskId]: {
+                name: name,
+                description: description,
+                id: taskId,
+            }}}))
         }  
         catch (e) {
             console.log(e.message)
