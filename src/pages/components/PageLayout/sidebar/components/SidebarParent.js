@@ -28,7 +28,8 @@ const SidebarParent = ({ item, setSidebarItems }) => {
                 icon: '<ion-icon name="ellipse"></ion-icon>',
                 id: uid,
                 color: color,
-                board: Boolean(board)
+                board: Boolean(board),
+                tasks: {}
             }
             setDoc(docRef, docData)
             setSidebarItems(prev => ({...prev, [item.id] : {...item, children: [...item.children, {...docData}]}}))

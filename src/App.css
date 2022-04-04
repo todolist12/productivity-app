@@ -17,6 +17,7 @@
   --text-color-2: #1f2937;
   --text-color-3: #3f3f46;
   --text-color-4: #ffffff;
+  --text-color-5: var(--bg-color-4)
 }
 
 .border-1 {
@@ -56,6 +57,10 @@
   color: var(--text-color-4);
 }
 
+.text-color-5 {
+  color: var(--text-color-5)
+}
+
 .header-btn ion-icon {
   color: white;
 }
@@ -67,7 +72,7 @@
 
 .hover:hover {
   opacity: 0.9;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .header-btn-hover:hover {

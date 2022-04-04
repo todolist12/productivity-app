@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Box = () => {
+const Box = ({ children, className }) => {
     return (
-        <div>Box</div>
+        <div className = {`p-4 bg-1 rounded-lg flex ${className}`} >
+            {children}
+        </div>
     )
 }
 
