@@ -5,7 +5,9 @@ const Plan = () => {
 
     return (
         <PageLayout>
-            MindmapPage
+            <div className='bg-2 text-color-1 h-screen'>
+                
+            </div>
         </PageLayout>
     )    
 }

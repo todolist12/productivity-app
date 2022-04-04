@@ -7,7 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 export const AuthContext = React.createContext({})
 
 const AuthProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useLocalStorage('currentUser',{});
+    const [currentUser, setCurrentUser] = useLocalStorage('currentUser', null);
     const [loading, setLoading] = useState(true);
 
     const readDocument = async (uid) => {

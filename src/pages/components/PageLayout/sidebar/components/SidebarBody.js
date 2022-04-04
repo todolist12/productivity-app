@@ -64,7 +64,7 @@ const SidebarBody = () => {
     });
 
     return (
-        <div className = "w-72 p-4 bg-1 text-color-1 pt-16 sticky h-full overflow-y-auto max-h-screen">
+        <div className = "w-72 p-4 bg-1 text-color-1 pt-16 fixed h-full overflow-y-auto max-h-screen">
             <div className = "flex flex-col items-center pb-10 pt-7">
                 <Avatar sx={{ width: 66, height: 66 }} />
                 <div className = "p-2 text-xl">Tilica Mihail</div>
