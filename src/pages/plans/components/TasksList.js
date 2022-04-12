@@ -9,18 +9,22 @@ const TasksList = () => {
     const tasks = Object.values(plan.tasks)
 
     return (
-        <Box className = 'mt-4 ml-4 mr-4 flex-col'>
-            {
-                tasks.map(task => {
-                    return (
-                        <div key = {task.id}>
-                            <Task task = {task}/>
-                        </div>
-                    )
-                })
-            }
+        <>
+        <div className = 'mt-4 ml-4 mr-4 flex-col h-full mb-4 bg-2'>
+            <div className = 'mb-2'>
+                {
+                    tasks.map(task => {
+                        return (
+                            <div key = {task.id}>
+                                <Task task = {task}/>
+                            </div>
+                        )
+                    })
+                }
+            </div>
             <AddTask />
-        </Box>
+        </div>
+        </>
     )
 }
 
