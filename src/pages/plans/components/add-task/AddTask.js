@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AddTaskButton from './components/AddTaskButton'
 import AddTaskForm from './components/AddTaskForm'
 
-const AddTask = () => {
+const AddTask = ({children, getPath}) => {
     const [formOpen, setFormOpen] = useState(false)
 
     return (
@@ -10,9 +10,11 @@ const AddTask = () => {
             {
                 formOpen 
                     ? 
-                    <AddTaskForm setFormOpen = {setFormOpen} />
+                    <AddTaskForm setFormOpen = {setFormOpen} getPath = {getPath} />
                     : 
-                    <AddTaskButton setFormOpen = {setFormOpen} />
+                    <div className = 'flex items-center'>
+                        <AddTaskButton setFormOpen = {setFormOpen} children = {children} />
+                    </div>
             }
         </div>
     )

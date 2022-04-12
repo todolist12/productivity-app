@@ -1,32 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { deleteField, doc, updateDoc } from 'firebase/firestore'
-import { db } from '../../../firebase-config'
-import { AuthContext } from '../../../providers/AuthProvider'
+import { db } from '../../../../firebase-config'
+import { AuthContext } from '../../../../providers/AuthProvider'
+import { PlanContext } from '../../../../providers/PlanProvider'
+import AddTask from '../add-task/AddTask'
+import { getByPlaceholderText } from '@testing-library/react'
 
-const Task = ({ task, plan }) => {
+const TaskChild = ({ task, getPath, plan, handleAddChild, handleDelete, handleCheck, handleEdit}) => {
     const [descriptionOpen, setDescriptionOpen] = useState(false)
-    const { currentUser } = useContext(AuthContext)
 
-    const handleCheck = () => {
-
-    }
-
-    const handleAddChild = () => {
-
-    }
-
-    const handleDelete = () => {
-        const docRef = doc(db, `users/${currentUser.id}/plans/${plan.id}`)
-        const docData = {
-            [`tasks.${task.id}`]: deleteField()
-        }
-        updateDoc(docRef, docData);
-    }
-
-    const handleEdit = () => {
-
-    }
-    
     const toggleDescription = () => {
         setDescriptionOpen(!descriptionOpen)
     }
@@ -39,23 +21,25 @@ const Task = ({ task, plan }) => {
                         {task.name}
                     </div>
                 </div>
-                <div className = 'flex'>                
+                <div className = 'flex items-center'>                
                     <button onClick = {handleCheck} className = 'hover flex items-center justify-between text-color-5 text-2xl'>
                         <ion-icon name="checkmark-circle-outline"></ion-icon>
                     </button>
                     <button onClick = {handleEdit} className = 'hover flex items-center justify-between text-color-5 text-2xl'>
                         <ion-icon name="create-outline"></ion-icon>
                     </button>
-                    <button onClick = {handleAddChild} className = 'hover flex items-center justify-between text-color-5 text-2xl'>
-                        <ion-icon name="add-outline"></ion-icon>
-                    </button>
+                    <AddTask getPath = {getPath}>
+                        <div className = 'text-color-5 flex items-center justify-between hover text-2xl'>
+                            <ion-icon name="add-outline"></ion-icon>
+                        </div>
+                    </AddTask>
                     <button onClick = {handleDelete} className = 'hover flex items-center justify-between text-red-400 text-2xl'>
                         <ion-icon name="trash-outline"></ion-icon>
                     </button>
                 </div>
             </div>
             {descriptionOpen && 
-                <div className = 'text-sm opacity-90 break-all'>
+                <div className = 'text-sm opacity-90 break-all mt-3'>
                     {task.description} 
                 </div>
             }
@@ -64,4 +48,4 @@ const Task = ({ task, plan }) => {
     )
 }
 
-export default Task
+export default TaskChild
