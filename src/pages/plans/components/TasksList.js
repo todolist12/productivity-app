@@ -16,7 +16,7 @@ const TasksList = () => {
                     tasks.map(task => {
                         return (
                             <div key = {task.id}>
-                                <Task task = {task}/>
+                                <Task task = {task} plan = {plan} />
                             </div>
                         )
                     })

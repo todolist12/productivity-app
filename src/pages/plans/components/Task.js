@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
-import Box from '../../components/Box'
+import React, { useContext, useState } from 'react'
+import { deleteField, doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../../firebase-config'
+import { AuthContext } from '../../../providers/AuthProvider'
 
-const Task = ({ task }) => {
+const Task = ({ task, plan }) => {
     const [descriptionOpen, setDescriptionOpen] = useState(false)
+    const { currentUser } = useContext(AuthContext)
 
     const handleCheck = () => {
 
@@ -13,7 +16,11 @@ const Task = ({ task }) => {
     }
 
     const handleDelete = () => {
-        
+        const docRef = doc(db, `users/${currentUser.id}/plans/${plan.id}`)
+        const docData = {
+            [`tasks.${task.id}`]: deleteField()
+        }
+        updateDoc(docRef, docData);
     }
 
     const handleEdit = () => {
