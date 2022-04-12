@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Box from '../../components/Box'
 
 const Task = ({ task }) => {
-    const [completed, setCompleted] = useState()
+    const [descriptionOpen, setDescriptionOpen] = useState(false)
 
     const handleCheck = () => {
 
@@ -13,18 +13,22 @@ const Task = ({ task }) => {
     }
 
     const handleDelete = () => {
-
+        
     }
 
     const handleEdit = () => {
 
     }
+    
+    const toggleDescription = () => {
+        setDescriptionOpen(!descriptionOpen)
+    }
 
     return (
         <div className = 'text-color-1 p-3 bg-1 mt-2 mb-2 rounded-lg'>
-            <div className = 'flex justify-between'>     
+            <div className = 'flex justify-between items-center'>     
                 <div className = 'w-4/6'>
-                    <div className = 'text-xl break-all h-7  box-border overflow-hidden'>
+                    <div className = 'cursor-pointer text-xl break-all h-7  box-border overflow-hidden' onClick = {toggleDescription}>
                         {task.name}
                     </div>
                 </div>
@@ -43,9 +47,12 @@ const Task = ({ task }) => {
                     </button>
                 </div>
             </div>
-            <div className = 'text-sm opacity-90 break-all'>
-                {task.description}
-            </div>
+            {descriptionOpen && 
+                <div className = 'text-sm opacity-90 break-all'>
+                    {task.description} 
+                </div>
+            }
+            
         </div>
     )
 }
