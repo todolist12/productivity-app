@@ -27,10 +27,10 @@ const Task = ({ task, plan }) => {
         <div className = 'duration-100 task transition'>
             <div className = 'text-color-1 p-3 bg-1 mt-2 rounded-lg'>
                 <div className = 'flex justify-between items-center'>     
-                    <div className = 'w-4/6 flex'>
+                    <div className = 'w-4/6 flex items-center'>
                         {!(JSON.stringify(task.children) === '{}') && 
-                            <button onClick={e => setShowChilds(!showChilds)}>
-                                show childs
+                            <button onClick={e => setShowChilds(!showChilds)} className = {`text-xl flex items-end parent${showChilds}`}>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
                             </button>
                         }
                         <div className = {`cursor-pointer text-xl break-all h-7 box-border overflow-hidden ${task.completed && 'complete'}`} onClick = {toggleDescription}>
