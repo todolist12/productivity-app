@@ -29,7 +29,7 @@ const Task = ({ task, plan }) => {
                 <div className = 'flex justify-between items-center'>     
                     <div className = 'w-4/6 flex items-center'>
                         {!(JSON.stringify(task.children) === '{}') && 
-                            <button onClick={e => setShowChilds(!showChilds)} className = {`text-xl flex items-end parent${showChilds}`}>
+                            <button onClick={e => setShowChilds(!showChilds)} className = {`pr-2 text-xl flex items-end parent${showChilds} ${task.completed && 'complete'}`}>
                                 <ion-icon name="chevron-forward-outline"></ion-icon>
                             </button>
                         }
