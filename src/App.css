@@ -21,7 +21,7 @@
 }
 
 .border-1 {
-  border: 1px solid var(--text-color-3)
+  border: 1px solid var(--text-color-3);
 }
 
 .bg-1 {

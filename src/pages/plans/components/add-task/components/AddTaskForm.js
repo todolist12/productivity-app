@@ -50,7 +50,7 @@ const AddTaskForm = ({ setFormOpen, getPath }) => {
     return (
         <Modal open = {true} className = 'flex items-center justify-center'>
             <div className = ' w-1/2'>
-                <Box className = 'border-1 text-color-1'>
+                <Box className = 'text-color-1'>
                     <form onSubmit = {handleSubmit} className = 'flex flex-col grow'>
                         <div className = 'pb-3 text-lg font-bold ml-1'>
                             Add Task
