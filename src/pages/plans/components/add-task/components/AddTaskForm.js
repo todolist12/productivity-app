@@ -25,8 +25,9 @@ const AddTaskForm = ({ setFormOpen, getPath }) => {
                     name: name,
                     description: description,
                     id: taskId,
-                    children: [],
+                    children: {},
                     completed: false,
+                    path: path
                 }
             }
             await updateDoc(docRef, docData);

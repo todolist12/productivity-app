@@ -112,14 +112,6 @@
   transition: 0.3s;
 }
 
-/* ion-icon {
-  color: var(--text-color-1)
-} */
-
 .ion-red ion-icon {
   color: rgb(219, 52, 52);
 }
-
-/* .task-max-width {
-  max-width: 10%;
-} */
