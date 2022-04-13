@@ -33,7 +33,7 @@ const Task = ({ task, plan }) => {
                                 show childs
                             </button>
                         }
-                        <div className = 'cursor-pointer text-xl break-all h-7 box-border overflow-hidden' onClick = {toggleDescription}>
+                        <div className = {`cursor-pointer text-xl break-all h-7 box-border overflow-hidden ${task.completed && 'complete'}`} onClick = {toggleDescription}>
                             {task.name}
                         </div>
                     </div>
@@ -63,7 +63,6 @@ const Task = ({ task, plan }) => {
                                         )
                                     })
                                 }
-                                {console.log(showChilds, task.name)}
                             </div>
                         )}}}
                 </Transition>

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../../../../firebase-config'
+import { AuthContext } from '../../../../../../providers/AuthProvider'
 
 const ToggleCompleteButton = ({ task, plan }) => {
+    const { currentUser } = useContext(AuthContext)
+
     const handleToggleComplete = () => {
-        const docRef = doc(db, plan.id)
+        const docRef = doc(db, `users/${currentUser.id}/plans/${plan.id}`)
         const docData = {
             [task.path + '.completed'] : !task.completed
         }

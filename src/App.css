@@ -115,3 +115,13 @@
 .ion-red ion-icon {
   color: rgb(219, 52, 52);
 }
+
+.complete {
+  opacity: .6;
+  -webkit-text-decoration-color: #ff6c6c;
+  text-decoration-color: #ff6c6c;
+  -webkit-text-decoration-line: line-through;
+  text-decoration-line: line-through;
+  -webkit-text-decoration-style: solid;
+  text-decoration-style: solid;
+}

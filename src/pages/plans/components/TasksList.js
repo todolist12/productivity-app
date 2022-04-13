@@ -21,7 +21,6 @@ const TasksList = () => {
             <div className = 'mb-2'>
                 {
                     tasks.map(task => {
-                        console.log(task.id)
                         return (
                             <div key = {task.id}>
                                 <Task task = {task} plan = {plan} />
