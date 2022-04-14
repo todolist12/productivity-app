@@ -18,6 +18,7 @@ const PlanProvider = ({ children }) => {
                 setPlanLoading(false);
             }
         }
+        console.log('fetchint data')
     }, [currentUser, planId])
 
     return (

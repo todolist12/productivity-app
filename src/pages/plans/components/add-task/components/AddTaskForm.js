@@ -14,7 +14,7 @@ import * as immutable from 'object-path-immutable'
 const AddTaskForm = ({ setFormOpen, getPath }) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser, setCurrentUser } = useContext(AuthContext)
     const { plan, setPlan } = useContext(PlanContext)
 
     const handleSubmit = async (e) => {
@@ -44,7 +44,16 @@ const AddTaskForm = ({ setFormOpen, getPath }) => {
                 completed: false,
                 path: path
             })
+            const modifiedUser = immutable.set(currentUser, `plans.${plan.id}.` + path,  {
+                name: name,
+                description: description,
+                id: taskId,
+                children: {},
+                completed: false,
+                path: path
+            })
             setPlan(modifiedPlan)
+            setCurrentUser(modifiedUser)
         }  
         catch (e) {
             console.log(e.message)

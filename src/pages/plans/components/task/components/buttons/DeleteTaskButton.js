@@ -6,7 +6,7 @@ import { PlanContext } from '../../../../../../providers/PlanProvider'
 import * as immutable from 'object-path-immutable'
 
 const DeleteTaskButton = ({ task, plan }) => {
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser, setCurrentUser } = useContext(AuthContext)
     const { setPlan } = useContext(PlanContext)
 
     const handleDelete = (e) => {
@@ -18,7 +18,9 @@ const DeleteTaskButton = ({ task, plan }) => {
         updateDoc(docRef, docData);
         delete plan.tasks[task.id]
         const updatedPlan = immutable.del(plan, task.path)
+        const updatedUser = immutable.del(currentUser, `plans.${plan.id}.` + task.path)
         setPlan(updatedPlan)
+        setCurrentUser(updatedUser)
     }
 
     return (

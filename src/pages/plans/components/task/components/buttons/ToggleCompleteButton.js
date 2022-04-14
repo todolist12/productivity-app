@@ -4,9 +4,10 @@ import { db } from '../../../../../../firebase-config'
 import { AuthContext } from '../../../../../../providers/AuthProvider'
 import { PlanContext } from '../../../../../../providers/PlanProvider'
 import * as immutable from 'object-path-immutable'
+import { TakeoutDiningSharp } from '@mui/icons-material'
 
 const ToggleCompleteButton = ({ task, plan }) => {
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser, setCurrentUser } = useContext(AuthContext)
     const { setPlan } = useContext(PlanContext) 
 
     const handleToggleComplete = () => {
@@ -17,7 +18,9 @@ const ToggleCompleteButton = ({ task, plan }) => {
         try {
             updateDoc(docRef, docData);
             const modifiedPlan = immutable.set(plan, task.path + '.completed', !task.completed)
+            const modifiedUser = immutable.set(currentUser, `plans.${plan.id}.` + task.path + '.completed', !task.completed)
             setPlan(modifiedPlan)
+            setCurrentUser(modifiedUser)
         } catch (e) {
             console.log(e)
         }

@@ -13,10 +13,10 @@ const scaleY = {
     transitionProperty: 'transform, opacity',
 };
 
-const Task = ({ task, plan }) => {
+const Task = ({ task, plan, isChild }) => {
 
     const [descriptionOpen, setDescriptionOpen] = useLocalStorage('showDescription-' + task.id, (JSON.stringify(task.children) === '{}'))
-    const [showChilds, setShowChilds] = useLocalStorage('showChilds-' + task.id, false);
+    const [showChilds, setShowChilds] = useLocalStorage('showChilds-' + task.id, true);
     const tasks = task ? task.children ? Object.values(task.children) : [] : []
 
     const toggleDescription = () => {
@@ -24,8 +24,8 @@ const Task = ({ task, plan }) => {
     }
 
     return (
-        <div className = 'duration-100 task transition'>
-            <div className = 'text-color-1 p-3 bg-1 mt-2 rounded-lg'>
+        <div className = {`duration-100 task transition bg-1 rounded-lg ${(isChild) && 'pl-6 pr-1'}`}>
+            <div className = {`text-color-1 ${(isChild) && 'p-1 pr-3 pb-3'} ${(!isChild) && 'mt-2 p-3'}`}>
                 <div className = 'flex justify-between items-center'>     
                     <div className = 'w-4/6 flex items-center'>
                         {!(JSON.stringify(task.children) === '{}') && 
@@ -51,24 +51,25 @@ const Task = ({ task, plan }) => {
                         <DeleteTaskButton task = {task} plan = {plan} />   
                     </div>
                 </div>
-                <Transition mounted = {(showChilds === true)} transition={scaleY} duration={500} timingFunction="ease">
-                        {(styles) => {
-                            if(showChilds) {
-                            return (
-                            <div style={{...styles}}>
-                                {
-                                    tasks.map(task => {
-                                        return (
-                                            <div key = {task.id}>
-                                                <Task task = {task} plan = {plan} />
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        )}}}
-                </Transition>
+
             </div>
+            <Transition mounted = {(showChilds === true)} transition={scaleY} duration={500} timingFunction="ease">
+                    {(styles) => {
+                        if(showChilds) {
+                        return (
+                        <div style={{...styles}}>
+                            {
+                                tasks.map(task => {
+                                    return (
+                                        <div key = {task.id}>
+                                            <Task task = {task} plan = {plan} isChild = {true}/>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    )}}}
+            </Transition>
         </div>
     )
 }
