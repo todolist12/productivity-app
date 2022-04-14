@@ -1,8 +1,8 @@
 import React from 'react'
 
 const EditTaskButton = ({ task, plan }) => {
-    const handleEdit = () => {
-
+    const handleEdit = (e) => {
+        
     }
 
     return (

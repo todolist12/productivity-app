@@ -9,7 +9,8 @@ const DeleteTaskButton = ({ task, plan }) => {
     const { currentUser } = useContext(AuthContext)
     const { setPlan } = useContext(PlanContext)
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        console.log('hello')
         const docRef = doc(db, `users/${currentUser.id}/plans/${plan.id}`)
         const docData = {
             [task.path]: deleteField()

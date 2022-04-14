@@ -15,7 +15,7 @@ const scaleY = {
 
 const Task = ({ task, plan }) => {
 
-    const [descriptionOpen, setDescriptionOpen] = useState(false)
+    const [descriptionOpen, setDescriptionOpen] = useLocalStorage('showDescription-' + task.id, (JSON.stringify(task.children) === '{}'))
     const [showChilds, setShowChilds] = useLocalStorage('showChilds-' + task.id, false);
     const tasks = task ? task.children ? Object.values(task.children) : [] : []
 
@@ -33,22 +33,24 @@ const Task = ({ task, plan }) => {
                                 <ion-icon name="chevron-forward-outline"></ion-icon>
                             </button>
                         }
-                        <div className = {`cursor-pointer text-xl break-all h-7 box-border overflow-hidden ${task.completed && 'complete'}`} onClick = {toggleDescription}>
-                            {task.name}
+                        <div>
+                            <div className = {`cursor-pointer hover text-xl break-all box-border overflow-hidden ${task.completed && 'complete'}`} onClick = {toggleDescription}>
+                                {task.name}
+                            </div>
+                            {descriptionOpen && 
+                                <div className = {`text-sm opacity-90 break-all ${task.completed && 'complete'}`}>
+                                    {task.description} 
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className = 'flex items-center'>
                         <ToggleCompleteButton task = {task} plan = {plan} />                
                         <EditTaskButton task = {task} plan = {plan} />
                         <AddChildButton task = {task} />
-                        <DeleteTaskButton task = {task} plan = {plan} />
+                        <DeleteTaskButton task = {task} plan = {plan} />   
                     </div>
                 </div>
-                {descriptionOpen && 
-                    <div className = 'text-sm opacity-90 break-all mt-3'>
-                        {task.description} 
-                    </div>
-                }
                 <Transition mounted = {(showChilds === true)} transition={scaleY} duration={500} timingFunction="ease">
                         {(styles) => {
                             if(showChilds) {
