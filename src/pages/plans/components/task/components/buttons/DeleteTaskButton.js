@@ -3,6 +3,7 @@ import { deleteField, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../../../../firebase-config'
 import { AuthContext } from '../../../../../../providers/AuthProvider'
 import { PlanContext } from '../../../../../../providers/PlanProvider'
+import * as immutable from 'object-path-immutable'
 
 const DeleteTaskButton = ({ task, plan }) => {
     const { currentUser } = useContext(AuthContext)
@@ -15,7 +16,8 @@ const DeleteTaskButton = ({ task, plan }) => {
         }
         updateDoc(docRef, docData);
         delete plan.tasks[task.id]
-        setPlan({...plan})
+        const updatedPlan = immutable.del(plan, task.path)
+        setPlan(updatedPlan)
     }
 
     return (

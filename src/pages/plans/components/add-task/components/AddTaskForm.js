@@ -8,6 +8,8 @@ import { classes } from '../../../../../utils/classes'
 import { createUid } from '../../../../../utils/functions';
 import Box from '../../../../components/Box';
 import TasksList from '../../TasksList';
+import * as immutable from 'object-path-immutable'
+
 
 const AddTaskForm = ({ setFormOpen, getPath }) => {
     const [name, setName] = useState('')
@@ -34,13 +36,15 @@ const AddTaskForm = ({ setFormOpen, getPath }) => {
             setName('');
             setDescription('');
             setFormOpen(false)
-            setPlan(prev => ({...prev, [path] : {
+            const modifiedPlan = immutable.set(plan, path, {
                 name: name,
                 description: description,
                 id: taskId,
-                children: [],
+                children: {},
                 completed: false,
-            }}))
+                path: path
+            })
+            setPlan(modifiedPlan)
         }  
         catch (e) {
             console.log(e.message)
