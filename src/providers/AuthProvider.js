@@ -26,11 +26,20 @@ const AuthProvider = ({ children }) => {
             const projectsQuery = query(projectsCollectionsRef)
             const projectsSnaphot = await getDocs(projectsQuery);
 
+            const daysCollectionsRef = collection(db, `users/${uid}/days`)
+            const daysQuery = query(daysCollectionsRef)
+            const daysSnaphot = await getDocs(daysQuery);
+
             const userDocSnapshot = await getDoc(userDocRef);
 
             let plansObjects = {};
             let mindmapsObjects = {};
             let projectsObjects = {};
+            let daysObjects = {};
+
+            daysSnaphot.forEach(day => {
+                daysObjects = {...daysObjects, [day.id]: day.data()}
+            })
 
             plansSnaphot.forEach(plan => {
                 plansObjects = {...plansObjects, [plan.id]: plan.data()}
@@ -42,15 +51,20 @@ const AuthProvider = ({ children }) => {
 
             projectsSnaphot.forEach(project => {
                 projectsObjects = {...projectsObjects, [project.id]: project.data()}
-                // console.log(project.id)
             })
 
             if(userDocSnapshot.exists()) {
-                const docData = {...userDocSnapshot.data(), id: uid, plans: plansObjects, projects: projectsObjects, mindmaps: mindmapsObjects};
+                const docData = {
+                    ...userDocSnapshot.data(), 
+                    id: uid, 
+                    plans: plansObjects, 
+                    projects: projectsObjects, 
+                    mindmaps: mindmapsObjects, 
+                    days: daysObjects
+                };
                 setCurrentUser(docData);
                 setLoading(false);
             }
-            // console.log(currentUser)
         } 
         catch (err) {
             console.log(err.message)

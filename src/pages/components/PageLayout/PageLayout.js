@@ -16,11 +16,11 @@ const PageLayout = ({children}) => {
                     {
                         width > 800 
                             ? 
-                            <div className = 'mt-14 ml-72'>
+                            <div className = 'pt-14 pl-72'>
                                 {children}
                             </div> 
                             : 
-                            <div className = 'mt-14'>
+                            <div className = 'pt-14'>
                                 {children}
                             </div>
                     } 

@@ -5,13 +5,13 @@ import { AuthContext } from './AuthProvider';
 export const PlanContext = React.createContext()
 
 const PlanProvider = ({ children }) => {
-    const [plan, setPlan] = useState(null);
-    const [planLoading, setPlanLoading] = useState(true);
-    const { currentUser, loading } = useContext(AuthContext)
     const { planId } = useParams();
+    const { currentUser, loading } = useContext(AuthContext)
+    const [plan, setPlan] = useState((currentUser && currentUser.plans[planId]));
+    const [planLoading, setPlanLoading] = useState((currentUser.plans[planId] !== undefined));
 
     useEffect(() => {
-        setPlanLoading(true);
+        // setPlanLoading(true);
         if(!loading) {
             if(currentUser && currentUser.plans && currentUser.plans[planId]) {
                 setPlan(currentUser.plans[planId])
