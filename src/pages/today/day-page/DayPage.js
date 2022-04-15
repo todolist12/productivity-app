@@ -1,6 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
+import Loading from 'react-loading'
 import { db } from '../../../firebase-config'
 import { AuthContext } from '../../../providers/AuthProvider'
 import DayHeader from './components/DayHeader'
@@ -13,25 +14,34 @@ const DayPage = ({ date, day, month, year }) => {
     useEffect(() => {
         if(!loading) {
             if(currentUser.days[day + '-' + month + '-' + year])
-                setTasks(currentUser.days[day + '-' + month + '-' + year].tasks)
+                setTasks(Object.values(currentUser.days[day + '-' + month + '-' + year].tasks))
         }
     }, [currentUser])
 
+    console.log(tasks)
+
     return (
-        <>
-            <DayHeader 
-                date = {date} 
-                day = {day} 
-                month = {month} 
-                year = {year}
-            />
-            <DayTasksList
-                date = {date} 
-                day = {day} 
-                month = {month} 
-                year = {year}
-                tasks = {tasks}
-            />
+        <>  
+            {
+                !loading ? 
+                    <>
+                        <DayHeader 
+                            date = {date} 
+                            day = {day} 
+                            month = {month} 
+                            year = {year}
+                        />
+                        <DayTasksList
+                            date = {date} 
+                            day = {day} 
+                            month = {month} 
+                            year = {year}
+                            tasks = {tasks}
+                        />
+                    </>
+                :
+                    <Loading />
+            }   
         </>
     )
 }

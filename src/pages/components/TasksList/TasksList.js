@@ -12,14 +12,15 @@ const TasksList = ({
         handleToggleComplete, 
         handleAssignPeriod,
         handleAssignDueDate,
+        date,
     }) => {
 
     const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
 
     return (
-        <div className = {classes.tasksListContainer}>
+        <div className = {classes.tasksListContainer + 'flex flex-col'}>
             {
-                tasks && tasks.length && 
+                tasks && tasks.length ? 
                     tasks.map(task => {
                         return (
                             <div key = {task.id}>
@@ -35,12 +36,13 @@ const TasksList = ({
                             </div>
                         )
                     })
+                : undefined
             }
             <AddTaskButton 
                 visible = {!addTaskFormVisible} 
                 onClick = {() => setAddTaskFormVisible(true)}
             >
-                <div className = "flex items-center text-color-5 hover">
+                <div className = "flex w-24 items-center text-color-5 hover">
                     <div className = "flex items-center text-xl">
                         <ion-icon name="add-outline"></ion-icon>
                     </div>
@@ -54,6 +56,8 @@ const TasksList = ({
                 <AddTaskForm 
                     handleAddTask = {handleAddTask}
                     setVisible = {setAddTaskFormVisible}
+                    date = {date}
+                    path = {'tasks.'}
                 />
             }
         </div>

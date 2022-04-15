@@ -7,7 +7,7 @@ import SetPriority from './components/SetPriority'
 
 const AddTaskForm = ({ 
     setVisible, 
-    handleAddchild,
+    handleAddTask,
     handleEditTask,
     editTask,
     title, 
@@ -15,12 +15,15 @@ const AddTaskForm = ({
     label,
     priority,
     dueDate, 
+    date,
+    path,
 }) => {
+
     const [titleInput, setTitleInput] = useState(title ? title : '');
     const [descriptionInput, setDescriptionInput] = useState(description ? description : '');
-    const [labelInput, setLabelInput] = useState(label);
-    const [priorityInput, setPriorityInput] = useState(priority);
-    const [dueDateInput, setDueDateInput] = useState(dueDate);
+    const [labelInput, setLabelInput] = useState(label ? label : ['not started']);
+    const [priorityInput, setPriorityInput] = useState(priority ? priority : Number(0));
+    const [dueDateInput, setDueDateInput] = useState(dueDate ? dueDate : date);
     
     return (
         <>
@@ -81,15 +84,15 @@ const AddTaskForm = ({
                             onClick = {e => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                console.log(11111111111)
                                 if(!editTask) {
-                                    handleAddchild(
+                                    handleAddTask(
                                         e, 
                                         titleInput, 
                                         descriptionInput,
                                         labelInput, 
                                         priorityInput,
                                         dueDateInput,
+                                        path,
                                     );
                                 } else {
                                     handleEditTask(
@@ -103,7 +106,9 @@ const AddTaskForm = ({
                                 }
                             }}
                         >
-                            Add Task
+                            {!editTask ? 
+                                'Add Task'
+                            : 'Done'}
                         </button>
                     </div>
                 </div> 
