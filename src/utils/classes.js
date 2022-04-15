@@ -6,5 +6,6 @@ export const classes = {
     headerTitle: 'text-2xl font-bold ', 
     tasksListContainer: 'm-4 rounded ',
     addTaskFormContainer: 'bg-red-500 rounded ',
-    addTaskFormInput: 'bg-1 text-color-1 outline-none p-1 rounded '
+    addTaskFormInput: 'bg-1 text-color-1 outline-none p-1 rounded ',
+    iconButton: 'flex items-center text-lg m-1 btn-hover '
 }

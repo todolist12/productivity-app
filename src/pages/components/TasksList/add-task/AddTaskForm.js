@@ -1,13 +1,20 @@
 import React from 'react'
+import { useState } from 'react'
 import { classes } from '../../../../utils/classes'
+import SetDueDate from './components/SetDueDate'
+import SetLabel from './components/SetLabel'
+import SetPriority from './components/SetPriority'
 
 const AddTaskForm = ({ 
     visible, 
     setVisible, 
-    titleInput, 
-    descriptionInput, 
-    setTitleInput, 
-    setDescriptionInput }) => {
+    handleAddchild, 
+}) => {
+    const [titleInput, setTitleInput] = useState();
+    const [descriptionInput, setDescriptionInput] = useState();
+    const [label, setLabel] = useState();
+    const [priority, setPriority] = useState();
+    const [dueDate, setDueDate] = useState();
     
     return (
         <>
@@ -29,8 +36,28 @@ const AddTaskForm = ({
                         />
                     </div>
                     <div className = 'flex items-center justify-between mt-2'>  
-                        <div>
-                            
+                        <div className = 'flex items-center'>
+                            {
+                                typeof setLabel === 'function' && 
+                                <SetLabel 
+                                    label = {label} 
+                                    setLabel = {setLabel} 
+                                />
+                            }
+                            {   
+                                typeof setPriority === 'function' && 
+                                <SetPriority 
+                                    priority = {priority} 
+                                    setPriority = {setPriority} 
+                                />
+                            }
+                            {
+                                typeof setDueDate === 'function' && 
+                                <SetDueDate 
+                                    dueDate = {dueDate} 
+                                    setDueDate = {setDueDate} 
+                                />
+                            }
                         </div>
                         <div>                    
                             <button 
@@ -44,6 +71,16 @@ const AddTaskForm = ({
                             </button>
                             <button 
                                 className = {classes.btnPrimary + 'ml-3'}
+                                onClick = {e => {
+                                    handleAddchild(
+                                        e, 
+                                        titleInput, 
+                                        descriptionInput,
+                                        label, 
+                                        priority,
+                                        dueDate
+                                    );
+                                }}
                             >
                                 Add Task
                             </button>

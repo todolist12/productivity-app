@@ -67,6 +67,7 @@
 
 .btn-hover:hover {
   opacity: 0.9;
+  cursor: pointer;
   transform: scale(1.06);
 }
 
