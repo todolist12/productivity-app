@@ -18,8 +18,6 @@ const DayPage = ({ date, day, month, year }) => {
         }
     }, [currentUser])
 
-    console.log(tasks)
-
     return (
         <>  
             {

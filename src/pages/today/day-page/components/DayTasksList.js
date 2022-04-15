@@ -5,9 +5,10 @@ import { db } from '../../../../firebase-config'
 import { AuthContext } from '../../../../providers/AuthProvider'
 import { createUid } from '../../../../utils/functions'
 import TasksList from '../../../components/TasksList/TasksList'
+import * as immutable from 'object-path-immutable'
 
 const DayTasksList = ({ date, day, month, year, tasks }) => {
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser, setCurrentUser } = useContext(AuthContext)
 
     const handleAddTask = async (
         e, 
@@ -19,7 +20,7 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
         path, ) => {
         const taskId = createUid();
         const newPath = path + taskId;
-        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-'+ year}`);
+        const docRef = doc(db, `users/${currentUser.id}/days/${dueDateInput}`);
         const docData = {
             [newPath]: {
                 title: titleInput,
@@ -35,6 +36,17 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
         }
         try {
             await updateDoc(docRef, docData)
+            setCurrentUser(immutable.set(currentUser, `days.${dueDateInput}.${newPath}`, {
+                title: titleInput,
+                description: descriptionInput,
+                label: labelInput,
+                priority: priorityInput,
+                dueDate: dueDateInput,
+                children: {},
+                path: newPath,
+                id: taskId,
+                completed: false,
+            }))
         } catch (e) {
             console.log(e);
         }
