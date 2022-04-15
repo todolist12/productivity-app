@@ -130,3 +130,8 @@
 .show-btn-on-hover:hover button {
   display: block;
 }
+
+.disabled-hover:hover {
+  opacity: 0.50;
+  transform: scale(1)
+}

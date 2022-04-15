@@ -49,11 +49,13 @@ const TasksList = ({
                     </div>
                 </div>
             </AddTaskButton>
-            <AddTaskForm 
-                visible = {addTaskFormVisible} 
-                handleAddTask = {handleAddTask}
-                setVisible = {setAddTaskFormVisible}
-            />
+            {   
+                addTaskFormVisible &&
+                <AddTaskForm 
+                    handleAddTask = {handleAddTask}
+                    setVisible = {setAddTaskFormVisible}
+                />
+            }
         </div>
     )
 }
