@@ -17,29 +17,29 @@ const TasksList = () => {
 
     return (
         <>
-        <div className = 'mt-4 ml-4 mr-4 flex-col h-full mb-4 bg-2'>
-            <div className = 'mb-2'>
-                {
-                    tasks.map(task => {
-                        return (
-                            <div key = {task.id}>
-                                <Task task = {task} plan = {plan} />
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <AddTask getPath = {getPath}>
-                <div className = 'text-color-5 flex items-center justify-center hover p-1 ' >
-                    <div className = 'flex items-center text-xl'>
-                        <ion-icon name="add-outline"></ion-icon>
-                    </div>
-                    <div>
-                        Add Task
-                    </div>
+            <div className = 'mt-4 ml-4 mr-4 flex flex-col h-full mb-4 bg-2'>
+                <div className = 'mb-2'>
+                    {
+                        tasks.map(task => {
+                            return (
+                                <div key = {task.id}>
+                                    <Task task = {task} plan = {plan} />
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-            </AddTask> 
-        </div>
+                <AddTask getPath = {getPath}>
+                    <div className = 'text-color-5 flex items-center justify-center hover p-1 ' >
+                        <div className = 'flex items-center text-xl'>
+                            <ion-icon name="add-outline"></ion-icon>
+                        </div>
+                        <div>
+                            Add Task
+                        </div>
+                    </div>
+                </AddTask> 
+            </div>
         </>
     )
 }

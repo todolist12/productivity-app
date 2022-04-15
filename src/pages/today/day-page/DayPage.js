@@ -10,6 +10,13 @@ const DayPage = ({ date, day, month, year }) => {
     const { currentUser, loading } = useContext(AuthContext)
     const [tasks, setTasks] = useState([])
 
+    useEffect(() => {
+        if(!loading) {
+            if(currentUser.days[day + '-' + month + '-' + year])
+                setTasks(currentUser.days[day + '-' + month + '-' + year].tasks)
+        }
+    }, [currentUser])
+
     return (
         <>
             <DayHeader 
@@ -23,6 +30,7 @@ const DayPage = ({ date, day, month, year }) => {
                 day = {day} 
                 month = {month} 
                 year = {year}
+                tasks = {tasks}
             />
         </>
     )

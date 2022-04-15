@@ -1,8 +1,11 @@
 import React from 'react'
+import TasksList from '../../../components/TasksList/TasksList'
 
-const DayTasksList = () => {
+const DayTasksList = ({ date, day, month, year, tasks }) => {
+
+
     return (
-        <div>DayTasks</div>
+        <TasksList />
     )
 }
 
