@@ -10,7 +10,7 @@ const Dashboard = () => {
         <div>
             <PageLayout>
                 <div className = ''>
-                        
+                    Dashboard
                 </div>
             </PageLayout>    
         </div>
