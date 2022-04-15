@@ -74,7 +74,7 @@ const SidebarParent = ({ item, setSidebarItems }) => {
                             item.children.map(child => {
                                 return (
                                     <div key = {child.id} >
-                                        <SidebarItem item = {child} color = {child.color}/>
+                                        <SidebarItem isChild = {true} item = {child} color = {child.color}/>
                                     </div>
                                 );
                             })

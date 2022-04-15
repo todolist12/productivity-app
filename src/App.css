@@ -125,3 +125,7 @@
   -webkit-text-decoration-style: solid;
   text-decoration-style: solid;
 }
+
+.show-btn-on-hover:hover button {
+  display: block;
+}

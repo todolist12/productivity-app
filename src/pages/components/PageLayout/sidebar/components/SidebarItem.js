@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SidebarChild from './SidebarChild';
 import SidebarLink from './SidebarLink';
 import SidebarParent from './SidebarParent';
 
-const SidebarItem = ({ item, setSidebarItems, color }) => {
+const SidebarItem = ({ item, setSidebarItems, color, isChild }) => {
 
     return ( 
         <>
             {
                 item ? 
-                    !item.children ? 
-                        <SidebarLink item = {item} color = {color}/>
-                    : 
+                    isChild ?
+                        <SidebarChild item = {item} color = {color} />
+                    : !item.children ? 
+                        <SidebarLink item = {item} color = {color} />
+                    :
                         <SidebarParent item = {item} setSidebarItems = {setSidebarItems}/>
                 : undefined
             }
