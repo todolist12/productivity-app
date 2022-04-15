@@ -12,7 +12,7 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
 
     const handleAddTask = async (
         e, 
-        titleInput, 
+        nameInput, 
         descriptionInput,
         labelInput, 
         priorityInput,
@@ -23,7 +23,7 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
         const docRef = doc(db, `users/${currentUser.id}/days/${dueDateInput}`);
         const docData = {
             [newPath]: {
-                title: titleInput,
+                name: nameInput,
                 description: descriptionInput,
                 label: labelInput,
                 priority: priorityInput,
@@ -37,7 +37,7 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
         try {
             await updateDoc(docRef, docData)
             setCurrentUser(immutable.set(currentUser, `days.${dueDateInput}.${newPath}`, {
-                title: titleInput,
+                name: nameInput,
                 description: descriptionInput,
                 label: labelInput,
                 priority: priorityInput,
@@ -52,10 +52,22 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
         }
     }
 
+    const handleToggleComplete = async (e, task) => {
+        e.stopPropagation();
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
+        const docData = {
+            [task.path + '.completed'] : !task.completed
+        }
+        updateDoc(docRef, docData);
+        setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.${task.path}.completed`, !task.completed))
+        console.log(currentUser)
+    }
+
     return (
         <TasksList 
             tasks = {tasks} 
             handleAddTask = {handleAddTask} 
+            handleToggleComplete = {handleToggleComplete}
             date = {day + '-' + month + '-'+ year} 
         />
     )

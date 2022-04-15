@@ -18,7 +18,7 @@ const TasksList = ({
     const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
 
     return (
-        <div className = {classes.tasksListContainer + 'flex flex-col'}>
+        <div className = {classes.tasksListContainer + ''}>
             {
                 tasks && tasks.length ? 
                     tasks.map(task => {
@@ -30,7 +30,6 @@ const TasksList = ({
                                     handleAddTask = {handleAddTask}
                                     handleEditTask = {handleEditTask}
                                     handleToggleComplete = {handleToggleComplete}
-                                    handleAssignPeriod = {handleAssignPeriod}
                                     handleAssignDueDate = {handleAssignDueDate}
                                 />
                             </div>

@@ -19,7 +19,7 @@ const AddTaskForm = ({
     path,
 }) => {
 
-    const [titleInput, setTitleInput] = useState(title ? title : '');
+    const [nameInput, setNameInput] = useState(title ? title : '');
     const [descriptionInput, setDescriptionInput] = useState(description ? description : '');
     const [labelInput, setLabelInput] = useState(label ? label : ['not started']);
     const [priorityInput, setPriorityInput] = useState(priority ? priority : Number(0));
@@ -28,12 +28,12 @@ const AddTaskForm = ({
     return (
         <>
             <div
-                className = 'flex flex-col bg-1 rounded-xl p-2 text-color-1'
+                className = 'flex flex-col bg-1 rounded p-2 text-color-1 mt-2'
             >
                 <div className = 'flex w-full flex-col'>
                     <input 
-                        value = {titleInput} 
-                        onChange = {e => setTitleInput(e.target.value)} 
+                        value = {nameInput} 
+                        onChange = {e => setNameInput(e.target.value)} 
                         className = {classes.addTaskFormInput + 'font-bold text-lg'} 
                         placeholder = 'Task name'
                     />
@@ -79,29 +79,32 @@ const AddTaskForm = ({
                             Cancel
                         </button>
                         <button 
-                            className = {`${classes.btnPrimary + 'ml-3 '} ${((titleInput === '') && classes.disabled)}`}
-                            disabled = {(titleInput === '')}
+                            className = {`${classes.btnPrimary + 'ml-3 '} ${((nameInput === '') && classes.disabled)}`}
+                            disabled = {(nameInput === '')}
                             onClick = {e => {
                                 e.preventDefault();
                                 e.stopPropagation();
                                 if(!editTask) {
                                     handleAddTask(
                                         e, 
-                                        titleInput, 
+                                        nameInput, 
                                         descriptionInput,
                                         labelInput, 
                                         priorityInput,
                                         dueDateInput,
                                         path,
                                     );
+                                    setNameInput('')
+                                    setDescriptionInput('')
                                 } else {
                                     handleEditTask(
                                         e,
-                                        titleInput, 
+                                        nameInput, 
                                         descriptionInput,
                                         labelInput, 
                                         priorityInput,
                                         dueDateInput,
+                                        path,
                                     )
                                 }
                             }}

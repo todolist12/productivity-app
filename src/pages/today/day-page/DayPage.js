@@ -14,7 +14,8 @@ const DayPage = ({ date, day, month, year }) => {
     useEffect(() => {
         if(!loading) {
             if(currentUser.days[day + '-' + month + '-' + year])
-                setTasks(Object.values(currentUser.days[day + '-' + month + '-' + year].tasks))
+                if(currentUser.days[day + '-' + month + '-' + year].tasks)
+                    setTasks(Object.values(currentUser.days[day + '-' + month + '-' + year].tasks))
         }
     }, [currentUser])
 
