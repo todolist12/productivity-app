@@ -35,7 +35,11 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
             }
         }
         try {
-            await updateDoc(docRef, docData)
+            try {
+                await updateDoc(docRef, docData)
+            } catch (e) {
+                await setDoc(docRef, docData)
+            }
             setCurrentUser(immutable.set(currentUser, `days.${dueDateInput}.${newPath}`, {
                 name: nameInput,
                 description: descriptionInput,

@@ -8,12 +8,16 @@ const TodayPage = () => {
 
     return (
         <PageLayout>
-            <DayPage 
-                date = {currentDate} 
-                day = {currentDate.getDate()} 
-                month = {currentDate.getMonth() + 1} 
-                year = {currentDate.getFullYear()}
-            />
+            <div className = 'flex justify-center'>
+            <div className = 'max-w w-full'>
+                <DayPage 
+                    date = {currentDate} 
+                    day = {currentDate.getDate()} 
+                    month = {currentDate.getMonth() + 1} 
+                    year = {currentDate.getFullYear()}
+                />
+            </div>
+            </div>
         </PageLayout>
     )
 }
