@@ -27,7 +27,7 @@ const TasksList = ({
     const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
 
     return (
-        <div className = {classes.tasksListContainer + ''}>
+        <div className = {classes.tasksListContainer + 'overflow-hidden'}>
             {/* <ReactSortable 
                 list={tasks} 
                 setList={setTasks}

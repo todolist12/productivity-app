@@ -41,7 +41,7 @@ const Task = ({
 
     if(editOpen) {
         return (
-            <>
+            <div className = {`${isChild && 'pl-4'}`}>
                 <AddTaskForm 
                     setVisible={setEditOpen}
                     editTask = {true}
@@ -54,7 +54,7 @@ const Task = ({
                     dueDate = {task.dueDate}
                     label = {task.label}
                 />
-            </>
+            </div>
         )
     }
 
@@ -116,9 +116,14 @@ const Task = ({
                                     return (
                                         <div key = {task.id}>
                                             <Task 
+                                                date = {date}
                                                 task = {task} 
                                                 isChild = {true}
+                                                handleDelete = {handleDelete}
+                                                handleAddTask = {handleAddTask}
+                                                handleEditTask = {handleEditTask}
                                                 handleToggleComplete = {handleToggleComplete}
+                                                handleAssignDueDate = {handleAssignDueDate}
                                             />
                                         </div>
                                     )
@@ -129,14 +134,14 @@ const Task = ({
             </Transition>
             {
                 addChildOpen &&
-                <>
+                <div className = 'pl-4'>
                     <AddTaskForm 
                         setVisible={setAddChildOpen}
                         handleAddTask = {handleAddTask}
                         path = {task.path + '.children.'}
                         date = {date}
                     />
-                </>
+                </div>
             }
         </div>
     )

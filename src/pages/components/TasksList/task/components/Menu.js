@@ -25,9 +25,9 @@ const Menu = ({
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                 </button>
                 <Dropdown open = {open} setOpen = {setOpen} position={'left'}>
-                    <div className = 'w-44 '>
-                        <AddChild handleAddChild={handleAddChild}/>
+                    <div className = 'w-44 '>      
                         <EditBtn handleEdit={handleEdit}/>
+                        <AddChild handleAddChild={handleAddChild}/>
                         {/* <DueDateBtn />
                         <LabelBtn />
                         <PriorityBtn /> */}
