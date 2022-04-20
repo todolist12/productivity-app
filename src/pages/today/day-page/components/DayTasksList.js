@@ -7,7 +7,7 @@ import { createUid } from '../../../../utils/functions'
 import TasksList from '../../../components/TasksList/TasksList'
 import * as immutable from 'object-path-immutable'
 
-const DayTasksList = ({ date, day, month, year, tasks }) => {
+const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
     const { currentUser, setCurrentUser } = useContext(AuthContext)
 
     const handleAddTask = async (
@@ -62,14 +62,18 @@ const DayTasksList = ({ date, day, month, year, tasks }) => {
         const docData = {
             [task.path + '.completed'] : !task.completed
         }
+        try {
         updateDoc(docRef, docData);
         setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.${task.path}.completed`, !task.completed))
-        console.log(currentUser)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
         <TasksList 
             tasks = {tasks} 
+            setTasks = {setTasks}
             handleAddTask = {handleAddTask} 
             handleToggleComplete = {handleToggleComplete}
             date = {day + '-' + month + '-'+ year} 

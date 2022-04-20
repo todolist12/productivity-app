@@ -19,7 +19,7 @@ const Task = ({
     handleToggleComplete, 
     handleAssignDueDate,
     }) => {
-        const [descriptionOpen, setDescriptionOpen] = useLocalStorage('showDescription-' + task.id, (JSON.stringify(task.children) === '{}'))
+        const [descriptionOpen, setDescriptionOpen] = useLocalStorage('showDescription-' + task.id, false)
         const [showChilds, setShowChilds] = useLocalStorage('showChilds-' + task.id, true);
         const tasks = task ? task.children ? Object.values(task.children) : [] : []
     

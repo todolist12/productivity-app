@@ -24,6 +24,7 @@ const AddTaskForm = ({
     const [labelInput, setLabelInput] = useState(label ? label : ['not started']);
     const [priorityInput, setPriorityInput] = useState(priority ? priority : Number(0));
     const [dueDateInput, setDueDateInput] = useState(dueDate ? dueDate : date);
+    const [priorityBtnOpen, setPriorityBtnOpen] = useState(false)
     
     return (
         <>
@@ -58,6 +59,8 @@ const AddTaskForm = ({
                             <SetPriority 
                                 priority = {priorityInput} 
                                 setPriority = {setPriorityInput} 
+                                open = {priorityBtnOpen}
+                                setOpen = {setPriorityBtnOpen}
                             />
                         }
                         {
@@ -95,6 +98,7 @@ const AddTaskForm = ({
                                         path,
                                     );
                                     setNameInput('')
+                                    setPriorityBtnOpen(false)
                                     setDescriptionInput('')
                                 } else {
                                     handleEditTask(

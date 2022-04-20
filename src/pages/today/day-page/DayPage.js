@@ -36,6 +36,7 @@ const DayPage = ({ date, day, month, year }) => {
                             month = {month} 
                             year = {year}
                             tasks = {tasks}
+                            setTasks = {setTasks}
                         />
                     </>
                 :

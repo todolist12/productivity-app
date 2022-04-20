@@ -3,9 +3,11 @@ import { classes } from '../../../utils/classes'
 import AddTaskButton from './add-task/AddTaskButton'
 import AddTaskForm from './add-task/AddTaskForm'
 import Task from './task/Task'
+import { ReactSortable } from "react-sortablejs";
 
 const TasksList = ({ 
         tasks, 
+        setTasks,
         handleDeleteTask, 
         handleAddTask,
         handleEditTask, 
@@ -19,24 +21,30 @@ const TasksList = ({
 
     return (
         <div className = {classes.tasksListContainer + ''}>
-            {
-                tasks && tasks.length ? 
-                    tasks.map(task => {
-                        return (
-                            <div key = {task.id}>
-                                <Task 
-                                    task = {task} 
-                                    handleDelete = {handleDeleteTask}
-                                    handleAddTask = {handleAddTask}
-                                    handleEditTask = {handleEditTask}
-                                    handleToggleComplete = {handleToggleComplete}
-                                    handleAssignDueDate = {handleAssignDueDate}
-                                />
-                            </div>
-                        )
-                    })
-                : undefined
-            }
+            {/* <ReactSortable 
+                list={tasks} 
+                setList={setTasks}
+                animation={300}
+            > */}
+                {
+                    tasks && tasks.length ? 
+                        tasks.map(task => {
+                            return (
+                                <div key = {task.id}>
+                                    <Task 
+                                        task = {task} 
+                                        handleDelete = {handleDeleteTask}
+                                        handleAddTask = {handleAddTask}
+                                        handleEditTask = {handleEditTask}
+                                        handleToggleComplete = {handleToggleComplete}
+                                        handleAssignDueDate = {handleAssignDueDate}
+                                    />
+                                </div>
+                            )
+                        })
+                    : undefined
+                }
+            {/* </ReactSortable> */}
             <AddTaskButton 
                 visible = {!addTaskFormVisible} 
                 onClick = {() => setAddTaskFormVisible(true)}
