@@ -41,6 +41,7 @@ const Task = ({
                 <AddTaskForm 
                     setVisible={setEditOpen}
                     editTask = {true}
+                    task = {task}
                     handleEditTask = {handleEditTask}
                     title = {task.name}
                     description = {task.description}

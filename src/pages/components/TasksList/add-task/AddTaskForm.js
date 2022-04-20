@@ -10,6 +10,7 @@ const AddTaskForm = ({
     handleAddTask,
     handleEditTask,
     editTask,
+    task,
     title, 
     description,
     label,
@@ -103,6 +104,7 @@ const AddTaskForm = ({
                                 } else {
                                     handleEditTask(
                                         e,
+                                        task,
                                         nameInput, 
                                         descriptionInput,
                                         labelInput, 

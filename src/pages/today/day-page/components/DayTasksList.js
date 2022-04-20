@@ -99,7 +99,37 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         dueDateInput, 
         path,
     ) => {
-        
+        e.stopPropagation()
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
+        const docData = {
+            [path]: {
+                name: nameInput,
+                description: descriptionInput,
+                label: labelInput,
+                priority: priorityInput,
+                dueDate: dueDateInput,
+                children: {},
+                path: path,
+                id: task.id,
+                completed: task.completed,
+            }
+        }
+        try {
+            await updateDoc(docRef, docData);
+            setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.${path}`, {
+                name: nameInput,
+                description: descriptionInput,
+                label: labelInput,
+                priority: priorityInput,
+                dueDate: dueDateInput,
+                children: {},
+                path: path,
+                id: task.id,
+                completed: task.completed,
+            }))
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
