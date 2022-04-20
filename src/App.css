@@ -148,3 +148,7 @@
 .show-btn-on-hover:hover .show-btn {
   display: block;
 }
+
+.border-2 {
+  border: 1px solid var(--bg-color-3);
+}

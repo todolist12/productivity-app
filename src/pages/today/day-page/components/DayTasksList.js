@@ -63,7 +63,7 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
     }
 
     const handleToggleComplete = async (e, task) => {
-        e.stopPropagation();
+        // e.stopPropagation();
         const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
         const docData = {
             [task.path + '.completed'] : !task.completed
@@ -89,11 +89,25 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         }
     }
 
+    const hanldeEdit = async (
+        e, 
+        task,
+        nameInput, 
+        descriptionInput,
+        labelInput, 
+        priorityInput,
+        dueDateInput, 
+        path,
+    ) => {
+        
+    }
+
     return (
         <TasksList 
             tasks = {tasks} 
             setTasks = {setTasks}
             handleAddTask = {handleAddTask} 
+            handleEditTask = {hanldeEdit}
             handleToggleComplete = {handleToggleComplete}
             handleDeleteTask = {handleDeleteTask}
             date = {day + '-' + month + '-'+ year} 

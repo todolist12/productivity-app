@@ -29,8 +29,9 @@ const SetPriority = ({ children, priority, setPriority, open, setOpen}) => {
                     <ion-icon name="flag"></ion-icon>
                 </button>
                     <Dropdown open={open} setOpen={setOpen}>
-                        <div className = 'text-center text-lg'>
+                        <div className = 'text-center text-md p-2'>
                             Chose Priority
+                            <br/>
                             <div className = 'w-40'>
                                 <Slider
                                     size="lg"

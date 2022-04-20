@@ -8,11 +8,11 @@ const DeleteBtn = ({ handleDelete, task }) => {
     }
 
     return (
-        <button className = 'flex items-center text-rose-500 font-bold' onClick = {deleteTask}>
+        <button className = 'flex items-center text-rose-500 font-bold w-full hover p-1' onClick = {deleteTask}>
             <div className = {classes.iconButton}>
                 <ion-icon name="trash-outline"></ion-icon>
             </div>
-            Delete
+            Delete task
         </button>
     )
 }

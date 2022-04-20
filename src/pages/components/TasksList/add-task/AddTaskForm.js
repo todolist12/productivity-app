@@ -110,6 +110,7 @@ const AddTaskForm = ({
                                         dueDateInput,
                                         path,
                                     )
+                                    setVisible(false)
                                 }
                             }}
                         >
