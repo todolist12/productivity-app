@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc, updateDoc } from 'firebase/firestore'
+import { deleteField, doc, setDoc, updateDoc } from 'firebase/firestore'
 import React, { useContext } from 'react'
 import { db } from '../../../../firebase-config'
 import { AuthContext } from '../../../../providers/AuthProvider'
@@ -76,12 +76,26 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         }
     }
 
+    const handleDeleteTask = async (task) => {
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
+        const docData = {
+            [task.path] : deleteField()
+        }
+        try {
+            await updateDoc(docRef, docData);
+            setCurrentUser(immutable.del(currentUser, `days.${day + '-' + month + '-' + year}.${task.path}`))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <TasksList 
             tasks = {tasks} 
             setTasks = {setTasks}
             handleAddTask = {handleAddTask} 
             handleToggleComplete = {handleToggleComplete}
+            handleDeleteTask = {handleDeleteTask}
             date = {day + '-' + month + '-'+ year} 
         />
     )

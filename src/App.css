@@ -127,9 +127,9 @@
   text-decoration-style: solid;
 }
 
-.show-btn-on-hover:hover button {
+/* .show-btn-on-hover:hover button {
   display: block;
-}
+} */
 
 .disabled-hover:hover {
   opacity: 0.50;
@@ -143,4 +143,8 @@
 .hover-block:hover {
   color: var(--text-color-1);
   opacity: 100%;
+}
+
+.show-btn-on-hover:hover .show-btn {
+  display: block;
 }

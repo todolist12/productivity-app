@@ -3,6 +3,8 @@ import useLocalStorage from '../../../../hooks/UseLocalStorage'
 import { Transition } from '@mantine/core';
 import { classes } from '../../../../utils/classes';
 import { PRIORITY_COLORS } from '../add-task/components/SetPriority';
+import Menu from './components/Menu';
+import { useState } from 'react';
 
 const scaleY = {
     in: { opacity: 1, transform: 'scaleY(1)' },
@@ -12,17 +14,18 @@ const scaleY = {
 };
 
 const Task = ({ 
-    task, 
-    isChild,
-    handleDelete, 
-    handleEdit, 
-    handleAddTask, 
-    handleToggleComplete, 
-    handleAssignDueDate,
+        task, 
+        isChild,
+        handleDelete, 
+        handleEdit, 
+        handleAddTask, 
+        handleToggleComplete, 
+        handleAssignDueDate,
     }) => {
         const [descriptionOpen, setDescriptionOpen] = useLocalStorage('showDescription-' + task.id, false)
         const [showChilds, setShowChilds] = useLocalStorage('showChilds-' + task.id, true);
-        const tasks = task ? task.children ? Object.values(task.children) : [] : []
+        const tasks = task ? task.children ? Object.values(task.children) : [] : [];
+        const [menuOpen, setMenuOpen] = useState(false)
     
         const toggleDescription = () => {
             setDescriptionOpen(!descriptionOpen)
@@ -57,8 +60,17 @@ const Task = ({
                                 }
                             </div>
                         </div>
-                        <div className = 'flex items-center'>
-                            
+                        <div className = {`flex items-center show-btn `}>
+                            <Menu 
+                                open = {menuOpen}
+                                setOpen = {setMenuOpen}
+                                task = {task}
+                                isChild = {isChild}
+                                handleDelete = {handleDelete}
+                                handleAddTask = {handleAddTask}
+                                handleAssignDueDate = {handleAssignDueDate}
+                                handleEdit = {handleEdit}
+                            />
                         </div>
                     </div>
                 </div>

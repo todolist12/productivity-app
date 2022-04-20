@@ -18,7 +18,7 @@ const SidebarChild = ({item, color}) => {
                 </div>
             </Link>
             <button 
-                className = 'p-1 text-color-1 flex items-center mr-2 hidden'
+                className = 'p-1 text-color-1 flex items-center mr-2 hidden show-btn'
                 onClick = {e => {e.stopPropagation(); setAnchor(e.target.value); setOpen(!open)}}
       
             >

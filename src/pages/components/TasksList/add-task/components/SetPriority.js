@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { classes } from '../../../../../utils/classes'
-import { Transition } from '@mantine/core';
 import { Slider } from '@mantine/core';
 import { ClickAwayListener } from '@mui/material';
+import Dropdown from '../../../Dropdown';
 
 const MARKS = [
     { value: 0, label: 'priority 1' },
@@ -28,30 +28,24 @@ const SetPriority = ({ children, priority, setPriority, open, setOpen}) => {
                 <button className = {classes.iconButton} onClick = {e => setOpen(prev => !prev)} style={{color: PRIORITY_COLORS.find((mark) => mark.value === priority).label}}>
                     <ion-icon name="flag"></ion-icon>
                 </button>
-                <div className = {`absolute -left-5 top-7`}>
-                    <Transition mounted={open} transition="pop" duration={400} timingFunction="ease">
-                        {(styles) => 
-                            <div style={styles} className = ' bg-1 shadow-lg p-2 rounded'>
-                                <div className = 'text-center text-lg'>
-                                    Chose Priority
-                                    <div className = 'w-40'>
-                                        <Slider
-                                            size="lg"
-                                            radius="md"
-                                            color = {PRIORITY_COLORS.find(mark => mark.value === priority).label}
-                                            label={null}
-                                            value = {priority}
-                                            onChange = {setPriority}
-                                            step = {25}
-                                            marks={MARKS}
-                                            styles={{ markLabel: { display: 'none' } }}
-                                        />
-                                    </div>
-                                </div>
+                    <Dropdown open={open} setOpen={setOpen}>
+                        <div className = 'text-center text-lg'>
+                            Chose Priority
+                            <div className = 'w-40'>
+                                <Slider
+                                    size="lg"
+                                    radius="md"
+                                    color = {PRIORITY_COLORS.find(mark => mark.value === priority).label}
+                                    label={null}
+                                    value = {priority}
+                                    onChange = {setPriority}
+                                    step = {25}
+                                    marks={MARKS}
+                                    styles={{ markLabel: { display: 'none' } }}
+                                />
                             </div>
-                        }
-                    </Transition>
-                </div>
+                        </div>
+                    </Dropdown>
             </div>
         </ClickAwayListener>
     )
