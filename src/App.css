@@ -152,3 +152,7 @@
 .border-2 {
   border: 1px solid var(--bg-color-3);
 }
+
+.border-3 {
+  border-width: 3px;
+}

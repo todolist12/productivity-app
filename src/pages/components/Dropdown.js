@@ -16,7 +16,7 @@ const Dropdown = ({children, open, setOpen, position}) => {
         )
     } else if(position === 'left') {
         return (
-            <div className = {`absolute -left-44 -top-0`}>
+            <div className = {`absolute -left-44 -top-0 z-10`}>
                 <Transition mounted={open} transition="pop" duration={400} timingFunction="ease">
                     {(styles) => 
                         <div style={styles} className = 'border-2 bg-1 shadow-lg rounded'>

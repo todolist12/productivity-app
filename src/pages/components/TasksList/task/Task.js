@@ -22,18 +22,22 @@ const Task = ({
         handleAddTask, 
         handleToggleComplete, 
         handleAssignDueDate,
+        date,
     }) => {
     const [descriptionOpen, setDescriptionOpen] = useLocalStorage('showDescription-' + task.id, false)
     const [showChilds, setShowChilds] = useLocalStorage('showChilds-' + task.id, true);
     const tasks = task ? task.children ? Object.values(task.children) : [] : [];
     const [menuOpen, setMenuOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
+    const [addChildOpen, setAddChildOpen] = useState(false)
 
     const handleOpenEdit = () => { setEditOpen(true); setMenuOpen(false)}
 
     const toggleDescription = () => {
         setDescriptionOpen(!descriptionOpen)
     }
+
+    const toggleAddChild = () => { setAddChildOpen(true); setMenuOpen(false)}
 
     if(editOpen) {
         return (
@@ -59,19 +63,19 @@ const Task = ({
             <div className = {`text-color-1 ${(isChild) && 'p-1 pr-3 pb-3'} ${(!isChild) && 'mt-2 p-2'}`}>
                 <div className = 'flex justify-between items-center'>     
                     <div className = 'w-4/6 flex items-center'>
-                        {!(JSON.stringify(task.children) === '{}') && 
-                            <button onClick={e => setShowChilds(!showChilds)} className = {`pr-2 text-xl flex items-end parent${showChilds} ${task.completed && 'complete'}`}>
-                                <ion-icon name="chevron-forward-outline"></ion-icon>
-                            </button>
-                        }
-                        <button className = {classes.iconButton + ' text-xl text-color-5'} onClick={e => handleToggleComplete(e, task)} style = {{color : PRIORITY_COLORS.find(c => c.value === task.priority).label}}>
-                            <ion-icon name={`ellipse-outline`}></ion-icon>
+                        <button className = {classes.iconButton + 'rounded-full w-5 h-5 p-1 border-3 text-xl text-color-5 flex items-center justify-center'} onClick={e => handleToggleComplete(e, task)} style = {{borderColor : PRIORITY_COLORS.find(c => c.value === task.priority).label}}>
+                            {/* <ion-icon name={`ellipse-outline`}></ion-icon> */}
                             {
-                                    <div className = {`absolute hover-block ${!task.completed && 'opacity-0'} text-sm text-color-1 flex items-center justify-center pl-1`}>
+                                    <div className = {`hover-block ${!task.completed && 'opacity-0'} text-sm text-color-1 flex items-center justify-center`}>
                                         <ion-icon name={`checkmark-outline`}></ion-icon>
                                     </div>
                             }
                         </button>
+                        {!(JSON.stringify(task.children) === '{}') && 
+                            <button onClick={e => setShowChilds(!showChilds)} className = {`pr-1 text-xl flex items-end parent${showChilds} ${task.completed && 'complete'}`}>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+                        }
                         <div className = 'flex flex-col justify-center'>
                             <div className = {`cursor-pointer hover text-lg break-all box-border overflow-hidden ${task.completed && 'complete'}`} onClick = {toggleDescription}>
                                 {task.name}
@@ -90,7 +94,7 @@ const Task = ({
                             task = {task}
                             isChild = {isChild}
                             handleDelete = {handleDelete}
-                            handleAddTask = {handleAddTask}
+                            handleAddChild = {toggleAddChild}
                             handleAssignDueDate = {handleAssignDueDate}
                             handleEdit = {handleOpenEdit}
                         />
@@ -103,10 +107,19 @@ const Task = ({
                         return (
                         <div style={{...styles}}>
                             {
-                                tasks.map(task => {
+                                tasks.sort(function(a, b) {
+                                    if(!(b.priority - a.priority)) {
+                                        return a.name < b.name ? -1 : 1
+                                    }
+                                    return b.priority - a.priority
+                                }).map(task => {
                                     return (
                                         <div key = {task.id}>
-                                            <Task task = {task} isChild = {true}/>
+                                            <Task 
+                                                task = {task} 
+                                                isChild = {true}
+                                                handleToggleComplete = {handleToggleComplete}
+                                            />
                                         </div>
                                     )
                                 })
@@ -114,6 +127,17 @@ const Task = ({
                         </div>
                     )}}}
             </Transition>
+            {
+                addChildOpen &&
+                <>
+                    <AddTaskForm 
+                        setVisible={setAddChildOpen}
+                        handleAddTask = {handleAddTask}
+                        path = {task.path + '.children.'}
+                        date = {date}
+                    />
+                </>
+            }
         </div>
     )
 }

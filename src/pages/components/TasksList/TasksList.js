@@ -44,6 +44,7 @@ const TasksList = ({
                             return (
                                 <div key = {task.id}>
                                     <Task 
+                                        date = {date}
                                         task = {task} 
                                         handleDelete = {handleDeleteTask}
                                         handleAddTask = {handleAddTask}

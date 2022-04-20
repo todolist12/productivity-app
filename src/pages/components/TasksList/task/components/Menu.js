@@ -26,11 +26,11 @@ const Menu = ({
                 </button>
                 <Dropdown open = {open} setOpen = {setOpen} position={'left'}>
                     <div className = 'w-44 '>
-                        <AddChild />
+                        <AddChild handleAddChild={handleAddChild}/>
                         <EditBtn handleEdit={handleEdit}/>
-                        <DueDateBtn />
+                        {/* <DueDateBtn />
                         <LabelBtn />
-                        <PriorityBtn />
+                        <PriorityBtn /> */}
                         <DeleteBtn task = {task} handleDelete = {handleDelete}/>
                     </div>
                 </Dropdown>
