@@ -2,6 +2,7 @@ import React from 'react'
 import useLocalStorage from '../../../../hooks/UseLocalStorage'
 import { Transition } from '@mantine/core';
 import { classes } from '../../../../utils/classes';
+import { PRIORITY_COLORS } from '../add-task/components/SetPriority';
 
 const scaleY = {
     in: { opacity: 1, transform: 'scaleY(1)' },
@@ -37,8 +38,13 @@ const Task = ({
                                     <ion-icon name="chevron-forward-outline"></ion-icon>
                                 </button>
                             }
-                            <button className = {classes.iconButton + ' text-xl text-color-5'} onClick={e => handleToggleComplete(e, task)}>
-                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            <button className = {classes.iconButton + ' text-xl text-color-5'} onClick={e => handleToggleComplete(e, task)} style = {{color : PRIORITY_COLORS.find(c => c.value === task.priority).label}}>
+                                <ion-icon name={`ellipse-outline`}></ion-icon>
+                                {
+                                        <div className = {`absolute hover-block ${!task.completed && 'opacity-0'} text-sm text-color-1 flex items-center justify-center pl-1`}>
+                                            <ion-icon name={`checkmark-outline`}></ion-icon>
+                                        </div>
+                                }
                             </button>
                             <div className = 'flex flex-col justify-center'>
                                 <div className = {`cursor-pointer hover text-lg break-all box-border overflow-hidden ${task.completed && 'complete'}`} onClick = {toggleDescription}>
@@ -55,7 +61,6 @@ const Task = ({
                             
                         </div>
                     </div>
-    
                 </div>
                 <Transition mounted = {(showChilds === true)} transition={scaleY} duration={500} timingFunction="ease">
                         {(styles) => {

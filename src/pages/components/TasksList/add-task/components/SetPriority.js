@@ -12,7 +12,7 @@ const MARKS = [
     { value: 100, label: 'priority 5' },
 ];
 
-const COLORS = [
+export const PRIORITY_COLORS = [
     { value: 0, label: 'gray' },
     { value: 25, label: 'teal' },
     { value: 50, label: 'green' },
@@ -25,7 +25,7 @@ const SetPriority = ({ children, priority, setPriority, open, setOpen}) => {
     return (
         <ClickAwayListener onClickAway={e => setOpen(false)}>
             <div className = 'relative'>
-                <button className = {classes.iconButton} onClick = {e => setOpen(prev => !prev)} style={{color: COLORS.find((mark) => mark.value === priority).label}}>
+                <button className = {classes.iconButton} onClick = {e => setOpen(prev => !prev)} style={{color: PRIORITY_COLORS.find((mark) => mark.value === priority).label}}>
                     <ion-icon name="flag"></ion-icon>
                 </button>
                 <div className = {`absolute -left-5 top-7`}>
@@ -38,8 +38,8 @@ const SetPriority = ({ children, priority, setPriority, open, setOpen}) => {
                                         <Slider
                                             size="lg"
                                             radius="md"
-                                            color = {COLORS.find(mark => mark.value === priority).label}
-                                            label={(val) => MARKS.find((mark) => mark.value === val).label}
+                                            color = {PRIORITY_COLORS.find(mark => mark.value === priority).label}
+                                            label={null}
                                             value = {priority}
                                             onChange = {setPriority}
                                             step = {25}

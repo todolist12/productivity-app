@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { classes } from '../../../utils/classes'
 import AddTaskButton from './add-task/AddTaskButton'
 import AddTaskForm from './add-task/AddTaskForm'
@@ -17,6 +17,13 @@ const TasksList = ({
         date,
     }) => {
 
+    useEffect(() => {
+        let sortable = tasks;
+        sortable.sort(function(a, b) {
+            return b.priority - a.priority
+        })
+    }, [tasks])
+
     const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
 
     return (
@@ -28,7 +35,12 @@ const TasksList = ({
             > */}
                 {
                     tasks && tasks.length ? 
-                        tasks.map(task => {
+                        tasks.sort(function(a, b) {
+                            if(!(b.priority - a.priority)) {
+                                return a.name < b.name ? -1 : 1
+                            }
+                            return b.priority - a.priority
+                        }).map(task => {
                             return (
                                 <div key = {task.id}>
                                     <Task 
