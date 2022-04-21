@@ -32,6 +32,7 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
                 path: newPath,
                 id: taskId,
                 completed: false,
+                creationTime: date.getTime(),
             }
         }
 
@@ -56,6 +57,7 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
                 path: newPath,
                 id: taskId,
                 completed: false,
+                creationTime: date.getTime(),
             }))
         } catch (e) {
             console.log(e);
@@ -69,8 +71,11 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
             [task.path + '.completed'] : !task.completed
         }
         try {
-        updateDoc(docRef, docData);
-        setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.${task.path}.completed`, !task.completed))
+            await updateDoc(docRef, docData);
+            await setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.${task.path}.completed`, !task.completed))
+            // Object.values(task.children).forEach(child => {
+            //     handleToggleComplete(e, child)
+            // })
         } catch (e) {
             console.log(e)
         }

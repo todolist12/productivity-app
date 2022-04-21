@@ -113,7 +113,7 @@ const Task = ({
                             {
                                 tasks.sort(function(a, b) {
                                     if(!(b.priority - a.priority)) {
-                                        return a.name < b.name ? -1 : 1
+                                        return b.creationTime - a.creationTime
                                     }
                                     return b.priority - a.priority
                                 }).map(task => {
