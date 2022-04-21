@@ -15,26 +15,21 @@ const SetDueDate = ({ dueDate, setDueDate, currentDate }) => {
     
     return (
         <div className = ''>
-
-        <DatePicker 
-            value = {dueDateInput} 
-            onChange = {setDueDateInput} 
-            classNames = {{
-                input: 'bg-1 rounded border-0 w-36 text-color-1 text-xs font-bold',
-                wrapper: 'bg-1 font-bold',
-                dropdown: 'bg-1 border-0 text-color-1 hover:bg-2',
-                calendarHeaderControl: 'bg-1 border-0 text-color-1 hover:bg-2',
-                arrow: 'hidden',
-                rightSection: 'hidden',
-                calendarHeader: 'bg-1 border-0 text-color-1 hover:bg-2',
-                calendarHeaderLevel: 'bg-1 border-0 text-color-1 hover:bg-2',
-            }}
-            icon = {<InputBtn />}
-        />
-            
-        {/* <button className = {classes.iconButton}>
-                <ion-icon name="calendar-clear-outline"></ion-icon>
-            </button> */}
+            <DatePicker 
+                value = {dueDateInput} 
+                onChange = {setDueDateInput} 
+                classNames = {{
+                    input: 'bg-1 rounded border-0 w-36 text-color-1 text-xs font-bold',
+                    wrapper: 'bg-1 font-bold',
+                    dropdown: 'bg-1 border-0 text-color-1 hover:bg-2',
+                    calendarHeaderControl: 'bg-1 border-0 text-color-1 hover:bg-2',
+                    arrow: 'hidden',
+                    rightSection: 'hidden',
+                    calendarHeader: 'bg-1 border-0 text-color-1 hover:bg-2',
+                    calendarHeaderLevel: 'bg-1 border-0 text-color-1 hover:bg-2',
+                }}
+                icon = {<InputBtn />}
+            />
         </div>
     )
 }
