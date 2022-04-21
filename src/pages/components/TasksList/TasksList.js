@@ -17,17 +17,17 @@ const TasksList = ({
         date,
     }) => {
 
-    useEffect(() => {
-        let sortable = tasks;
-        sortable.sort(function(a, b) {
-            return b.priority - a.priority
-        })
-    }, [tasks])
+    // useEffect(() => {
+    //     let sortable = tasks;
+    //     sortable.sort(function(a, b) { 
+    //         return b.priority - a.priority
+    //     })
+    // }, [tasks])
 
     const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
 
     return (
-        <div className = {classes.tasksListContainer + 'overflow-hidden'}>
+        <div className = {classes.tasksListContainer + ' //overflow-hidden'}>
             {/* <ReactSortable 
                 list={tasks} 
                 setList={setTasks}

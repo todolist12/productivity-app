@@ -4,7 +4,7 @@ import { Transition } from '@mantine/core';
 const Dropdown = ({children, open, setOpen, position}) => {
     if(position === 'top') {
         return (
-            <div className = {`absolute -left-5 -top-9`}>
+            <div className = {`absolute -left-5 -top-9 z-10`}>
                 <Transition mounted={open} transition="pop" duration={400} timingFunction="ease">
                     {(styles) => 
                         <div style={styles} className = 'border-2 bg-1 shadow-lg rounded'>
@@ -28,7 +28,7 @@ const Dropdown = ({children, open, setOpen, position}) => {
         )
     }
     return (
-        <div className = {`absolute -left-5 top-7`}>
+        <div className = {`absolute -left-5 top-7 z-1000`}>
             <Transition mounted={open} transition="pop" duration={400} timingFunction="ease">
                 {(styles) => 
                     <div style={styles} className = 'border-2 bg-1 shadow-lg rounded'>

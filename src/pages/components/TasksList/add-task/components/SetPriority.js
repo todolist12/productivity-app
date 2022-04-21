@@ -28,25 +28,25 @@ const SetPriority = ({ children, priority, setPriority, open, setOpen}) => {
                 <button className = {classes.iconButton} onClick = {e => setOpen(prev => !prev)} style={{color: PRIORITY_COLORS.find((mark) => mark.value === priority).label}}>
                     <ion-icon name="flag"></ion-icon>
                 </button>
-                    <Dropdown open={open} setOpen={setOpen}>
-                        <div className = 'text-center text-md p-2'>
-                            Chose Priority
-                            <br/>
-                            <div className = 'w-40'>
-                                <Slider
-                                    size="lg"
-                                    radius="md"
-                                    color = {PRIORITY_COLORS.find(mark => mark.value === priority).label}
-                                    label={null}
-                                    value = {priority}
-                                    onChange = {setPriority}
-                                    step = {25}
-                                    marks={MARKS}
-                                    styles={{ markLabel: { display: 'none' } }}
-                                />
-                            </div>
+                <Dropdown open={open} setOpen={setOpen}>
+                    <div className = 'text-center text-md p-2'>
+                        Chose Priority
+                        <br/>
+                        <div className = 'w-40'>
+                            <Slider
+                                size="lg"
+                                radius="md"
+                                color = {PRIORITY_COLORS.find(mark => mark.value === priority).label}
+                                label={null}
+                                value = {priority}
+                                onChange = {setPriority}
+                                step = {25}
+                                marks={MARKS}
+                                styles={{ markLabel: { display: 'none' } }}
+                            />
                         </div>
-                    </Dropdown>
+                    </div>
+                </Dropdown>
             </div>
         </ClickAwayListener>
     )

@@ -156,3 +156,7 @@
 .border-3 {
   border-width: 3px;
 }
+
+.z-1000 {
+  z-index: 1000;
+}

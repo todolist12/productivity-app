@@ -88,16 +88,20 @@ const Task = ({
                         </div>
                     </div>
                     <div className = {`flex items-center show-btn `}>
-                        <Menu 
-                            open = {menuOpen}
-                            setOpen = {setMenuOpen}
-                            task = {task}
-                            isChild = {isChild}
-                            handleDelete = {handleDelete}
-                            handleAddChild = {toggleAddChild}
-                            handleAssignDueDate = {handleAssignDueDate}
-                            handleEdit = {handleOpenEdit}
-                        />
+                        
+                        {   
+                            
+                            <Menu 
+                                open = {menuOpen}
+                                setOpen = {setMenuOpen}
+                                task = {task}
+                                isChild = {isChild}
+                                handleDelete = {handleDelete}
+                                handleAddChild = {toggleAddChild}
+                                handleAssignDueDate = {handleAssignDueDate}
+                                handleEdit = {handleOpenEdit}
+                            />  
+                        }
                     </div>
                 </div>
             </div>

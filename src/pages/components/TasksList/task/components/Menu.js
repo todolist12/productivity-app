@@ -24,6 +24,8 @@ const Menu = ({
                 <button className = {classes.iconButton} onClick = {e => setOpen(prev => !prev)}>
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                 </button>
+                {
+                    open &&
                 <Dropdown open = {open} setOpen = {setOpen} position={'left'}>
                     <div className = 'w-44 '>      
                         <EditBtn handleEdit={handleEdit}/>
@@ -34,6 +36,7 @@ const Menu = ({
                         <DeleteBtn task = {task} handleDelete = {handleDelete}/>
                     </div>
                 </Dropdown>
+                }
             </div>
         </ClickAwayListener>
     )
