@@ -2,6 +2,7 @@ import React from 'react'
 import { Transition } from '@mantine/core';
 
 const Dropdown = ({children, open, setOpen, position}) => {
+    if(!open) return ;
     if(position === 'top') {
         return (
             <div className = {`absolute -left-5 -top-9 z-10`}>
