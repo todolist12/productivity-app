@@ -25,7 +25,7 @@ const AddTaskForm = ({
     const [descriptionInput, setDescriptionInput] = useState(description ? description : '');
     const [labelInput, setLabelInput] = useState(label ? label : ['not started']);
     const [priorityInput, setPriorityInput] = useState(priority ? priority : Number(0));
-    const [dueDateInput, setDueDateInput] = useState(dueDate ? dueDate : date);
+    const [dueDateInput, setDueDateInput] = useState(dueDate ? dueDate : date ? date : null);
     const [priorityBtnOpen, setPriorityBtnOpen] = useState(false)
     
     return (
@@ -70,10 +70,11 @@ const AddTaskForm = ({
                             <SetDueDate 
                                 dueDate = {dueDateInput} 
                                 setDueDate = {setDueDateInput} 
+                                currentDate = {date}
                             />
                         }
                     </div>
-                    <div>                    
+                    <div className = 'flex wrap-0'>                    
                         <button 
                             className = {classes.btnSecondary}
                             onClick = {e => {
@@ -84,7 +85,7 @@ const AddTaskForm = ({
                             Cancel
                         </button>
                         <button 
-                            className = {`${classes.btnPrimary + 'ml-3 '} ${((nameInput === '') && classes.disabled)}`}
+                            className = {`${classes.btnPrimary + 'ml-3'} ${((nameInput === '') && classes.disabled)}`}
                             disabled = {(nameInput === '')}
                             onClick = {e => {
                                 e.preventDefault();
