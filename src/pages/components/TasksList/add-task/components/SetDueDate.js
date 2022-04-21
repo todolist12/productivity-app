@@ -9,7 +9,7 @@ const SetDueDate = ({ dueDate, setDueDate, currentDate }) => {
     useEffect(() => {
         if(dueDateInput)
             setDueDate(dueDateInput.getDate() + '-' + (dueDateInput.getMonth() + 1) + '-' + dueDateInput.getFullYear())
-        else 
+        else if (currentDate)
             setDueDate(currentDate)
     }, [dueDateInput])
     

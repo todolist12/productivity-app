@@ -105,7 +105,7 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         path,
     ) => {
         e.stopPropagation()
-        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
+        const docRef = doc(db, `users/${currentUser.id}/days/${dueDateInput}`)
         const docData = {
             [path]: {
                 name: nameInput,
@@ -119,9 +119,31 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
                 completed: task.completed,
             }
         }
+
+        const docRef2 = doc(db, `users/${currentUser.id}/days/${task.dueDate}`)
+
+        const docData1 = {
+            tasks: {}
+        }
+
+        const docData2 = {
+            [path]: deleteField()
+        }
+
         try {
-            await updateDoc(docRef, docData);
-            setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.${path}`, {
+            try {
+                await updateDoc(docRef2, docData2);
+                await updateDoc(docRef, docData);
+            } catch (e) {
+                await updateDoc(docRef2, docData2);
+                await setDoc(docRef, docData1);
+                await updateDoc(docRef, docData);
+            }
+            setCurrentUser(immutable.set(
+                    immutable.del(
+                        currentUser, 
+                        `days.${task.dueDate}.${path}`
+                    ), `days.${dueDateInput}.${path}`, {
                 name: nameInput,
                 description: descriptionInput,
                 label: labelInput,

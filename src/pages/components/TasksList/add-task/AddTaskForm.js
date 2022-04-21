@@ -25,8 +25,16 @@ const AddTaskForm = ({
     const [descriptionInput, setDescriptionInput] = useState(description ? description : '');
     const [labelInput, setLabelInput] = useState(label ? label : ['not started']);
     const [priorityInput, setPriorityInput] = useState(priority ? priority : Number(0));
-    const [dueDateInput, setDueDateInput] = useState(dueDate ? dueDate : date ? date : null);
+    const [dueDateInput, setDueDateInput] = useState(
+        dueDate ? 
+            dueDate : 
+            date ? date : 
+            task ? task.dueDate : 
+            path
+        );
     const [priorityBtnOpen, setPriorityBtnOpen] = useState(false)
+
+    // console.log(dueDateInput, ' dueDate ', editTask)
     
     return (
         <>
