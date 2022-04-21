@@ -94,7 +94,7 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         }
     }
 
-    const hanldeEdit = async (
+    const hanldeEditTask = async (
         e, 
         task,
         nameInput, 
@@ -159,12 +159,24 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         }
     }
 
+    const handleAddSection = async (name) => {
+        const sectionId = createUid();
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
+        const docData = {
+            sections: {
+                [sectionId] : {
+                    tasks: {}
+                }
+            }
+        }
+    }
+
     return (
         <TasksList 
             tasks = {tasks} 
             setTasks = {setTasks}
             handleAddTask = {handleAddTask} 
-            handleEditTask = {hanldeEdit}
+            handleEditTask = {hanldeEditTask}
             handleToggleComplete = {handleToggleComplete}
             handleDeleteTask = {handleDeleteTask}
             date = {day + '-' + month + '-'+ year} 

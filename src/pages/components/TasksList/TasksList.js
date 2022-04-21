@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { classes } from '../../../utils/classes'
 import AddSectionButton from './add-section/AddSectionButton'
+import AddSectionForm from './add-section/AddSectionForm'
 import AddTaskButton from './add-task/AddTaskButton'
 import AddTaskForm from './add-task/AddTaskForm'
 import Task from './task/Task'
@@ -21,7 +22,7 @@ const TasksList = ({
     const [addSectionButtonVisible, setAddSectionButtonVisible] = useState(true)
 
     return (
-        <div>
+        <div className = {classes.tasksListContainer + ' //overflow-hidden'}>
             {
                 sections && sections.length && 
                 sections.map(section => {
@@ -42,8 +43,19 @@ const TasksList = ({
                     visible = {addSectionButtonVisible}
                     setVisible = {setAddSectionButtonVisible}
                 >
-
+                    <div className = "flex w-28 items-center text-color-5 hover">
+                        <div className = "flex items-center text-xl">
+                            <ion-icon name="add-outline"></ion-icon>
+                        </div>
+                        <div>
+                            Add Section
+                        </div>
+                    </div>
                 </AddSectionButton>
+                <AddSectionForm 
+                    visible = {!addSectionButtonVisible}
+                    setVisible = {setAddSectionButtonVisible}
+                />
             </div>
         </div>
     )

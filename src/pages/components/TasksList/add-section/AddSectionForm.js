@@ -1,24 +1,63 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { classes } from '../../../../utils/classes';
 
 const AddSectionForm = ({
-        children, 
         visible, 
         setVisible,
         handleAddSection,
         handleEditSection,
-        handleDeleteSection, 
         name,
         editSection,
         section,
-        path,
     }) => {
 
     const [nameInput, setNameInput] = useState(name ? name : '');
 
     return (
-        <div>
-            
-        </div>
+        <>
+            {
+                visible && 
+                <div className = 'bg-1 p-2 rounded flex flex-col'>
+                    <input 
+                        className = {classes.addTaskFormInput}
+                        placeholder = 'Section name'
+                        value = {nameInput}
+                        onChange = {e => setNameInput(e.target.value)}
+                    />
+                    <div className = 'flex justify-end items-center'>
+                        <button 
+                            className = {classes.btnSecondary} 
+                            onClick = {e => {setVisible(true); setNameInput('');}}
+                        >
+                            Cancel
+                        </button>
+                        <button 
+                            className = {classes.btnPrimary + 'ml-2'}
+                            disabled = {(nameInput === '')}
+                            onClick = {e => {
+                                e.stopPropagation();
+                                if(editSection) {
+                                    handleEditSection(
+                                        nameInput, 
+                                        section,
+                                    );
+                                } else {
+                                    handleAddSection(
+                                        nameInput, 
+                                    );
+                                }
+                            }}
+                        >
+                            {
+                                editSection ? 
+                                    'Done' :
+                                    'Add Section'
+                            }
+                        </button>
+                    </div>
+                </div>
+            }   
+        </>
     )
 }
 

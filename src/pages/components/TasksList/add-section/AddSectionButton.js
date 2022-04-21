@@ -7,9 +7,14 @@ const AddSectionButton = ({
     }) => {
 
     return (
-        <button onClick = {e => setVisible(prev => !prev)}>
-            {children}
-        </button>
+        <>
+            {
+                visible &&
+                <button onClick = {e => setVisible(prev => !prev)}>
+                    {children}
+                </button>
+            }
+        </>
     )
 }
 
