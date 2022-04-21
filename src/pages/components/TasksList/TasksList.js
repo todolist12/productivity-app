@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { classes } from '../../../utils/classes'
+import AddSectionButton from './add-section/AddSectionButton'
 import AddTaskButton from './add-task/AddTaskButton'
 import AddTaskForm from './add-task/AddTaskForm'
 import Task from './task/Task'
-import { ReactSortable } from "react-sortablejs";
+import TaskListSection from './TaskListSection'
 
 const TasksList = ({ 
-        tasks, 
-        setTasks,
+        sections,
+        setSections,
         handleDeleteTask, 
         handleAddTask,
         handleEditTask, 
@@ -17,69 +18,33 @@ const TasksList = ({
         date,
     }) => {
 
-    // useEffect(() => {
-    //     let sortable = tasks;
-    //     sortable.sort(function(a, b) { 
-    //         return b.priority - a.priority
-    //     })
-    // }, [tasks])
-
-    const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
+    const [addSectionButtonVisible, setAddSectionButtonVisible] = useState(true)
 
     return (
-        <div className = {classes.tasksListContainer + ' //overflow-hidden'}>
-            {/* <ReactSortable 
-                list={tasks} 
-                setList={setTasks}
-                animation={300}
-            > */}
-                {
-                    tasks && tasks.length ? 
-                        tasks.sort(function(a, b) {
-                            if(!(b.priority - a.priority)) {
-                                return b.creationTime - a.creationTime
-                            }
-                            return b.priority - a.priority
-                        }).map(task => {
-                            return (
-                                <div key = {task.id}>
-                                    <Task 
-                                        date = {date}
-                                        task = {task} 
-                                        handleDelete = {handleDeleteTask}
-                                        handleAddTask = {handleAddTask}
-                                        handleEditTask = {handleEditTask}
-                                        handleToggleComplete = {handleToggleComplete}
-                                        handleAssignDueDate = {handleAssignDueDate}
-                                    />
-                                </div>
-                            )
-                        })
-                    : undefined
-                }
-            {/* </ReactSortable> */}
-            <AddTaskButton 
-                visible = {!addTaskFormVisible} 
-                onClick = {() => setAddTaskFormVisible(true)}
-            >
-                <div className = "flex w-24 items-center text-color-5 hover">
-                    <div className = "flex items-center text-xl">
-                        <ion-icon name="add-outline"></ion-icon>
-                    </div>
-                    <div>
-                        Add Task
-                    </div>
-                </div>
-            </AddTaskButton>
-            {   
-                addTaskFormVisible &&
-                <AddTaskForm 
-                    handleAddTask = {handleAddTask}
-                    setVisible = {setAddTaskFormVisible}
-                    date = {date}
-                    path = {'tasks.'}
-                />
+        <div>
+            {
+                sections && sections.length && 
+                sections.map(section => {
+                    <TaskListSection
+                        tasks={section.tasks}
+                        handleDeleteTask = {handleDeleteTask}
+                        handleAddTask = {handleAddTask}
+                        handleEditTask = {handleEditTask}
+                        handleToggleComplete = {handleToggleComplete}
+                        handleAssignPeriod = {handleAssignPeriod}
+                        handleAssignDueDate = {handleAssignDueDate}
+                        date = {date}
+                    />
+                })
             }
+            <div>
+                <AddSectionButton 
+                    visible = {addSectionButtonVisible}
+                    setVisible = {setAddSectionButtonVisible}
+                >
+
+                </AddSectionButton>
+            </div>
         </div>
     )
 }
