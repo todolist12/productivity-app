@@ -21,9 +21,12 @@ const TaskListSection = ({
 
     return (
         <div className = {classes.tasksListContainer + ' //overflow-hidden'}>
-                <div>
-                    <div className = ''>
+                <div className = 'flex justify-between items-center border-b border-1'>
+                    <div className = 'text-color-1 font-bold'>
                         {section && section.name}
+                    </div>
+                    <div className = {classes.iconButton + ' text-color-1'}>
+                        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                     </div>
                 </div>
                 {
@@ -69,7 +72,7 @@ const TaskListSection = ({
                     handleAddTask = {handleAddTask}
                     setVisible = {setAddTaskFormVisible}
                     date = {date}
-                    path = {'tasks.'}
+                    path = {`sections.${section.id}.tasks.`}
                 />
             }
         </div>

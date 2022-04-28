@@ -9,13 +9,16 @@ import DayTasksList from './components/DayTasksList'
 
 const DayPage = ({ date, day, month, year }) => {
     const { currentUser, loading } = useContext(AuthContext)
-    const [tasks, setTasks] = useState([])
+    const [sections, setSections] = useState([])
 
     useEffect(() => {
         if(!loading) {
             if(currentUser.days[day + '-' + month + '-' + year])
-                if(currentUser.days[day + '-' + month + '-' + year].tasks)
-                    setTasks(Object.values(currentUser.days[day + '-' + month + '-' + year].tasks))
+                if(currentUser.days[day + '-' + month + '-' + year]){
+                    if(currentUser.days[day + '-' + month + '-' + year].sections) {
+                        setSections(Object.values(currentUser.days[day + '-' + month + '-' + year].sections))
+                    }
+                }
         }
     }, [currentUser])
 
@@ -35,8 +38,8 @@ const DayPage = ({ date, day, month, year }) => {
                             day = {day} 
                             month = {month} 
                             year = {year}
-                            tasks = {tasks}
-                            setTasks = {setTasks}
+                            sections = {sections}
+                            setSections = {setSections}
                         />
                     </>
                 :

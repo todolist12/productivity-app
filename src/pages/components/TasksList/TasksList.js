@@ -10,6 +10,9 @@ import TaskListSection from './TaskListSection'
 const TasksList = ({ 
         sections,
         setSections,
+        handleAddSection,
+        handleEditSection,
+        handleDeleteSection,
         handleDeleteTask, 
         handleAddTask,
         handleEditTask, 
@@ -22,23 +25,32 @@ const TasksList = ({
     const [addSectionButtonVisible, setAddSectionButtonVisible] = useState(true)
 
     return (
-        <div className = {classes.tasksListContainer + ' //overflow-hidden'}>
+        <div className = {''}>
             {
-                sections && sections.length && 
-                sections.map(section => {
-                    <TaskListSection
-                        tasks={section.tasks}
-                        handleDeleteTask = {handleDeleteTask}
-                        handleAddTask = {handleAddTask}
-                        handleEditTask = {handleEditTask}
-                        handleToggleComplete = {handleToggleComplete}
-                        handleAssignPeriod = {handleAssignPeriod}
-                        handleAssignDueDate = {handleAssignDueDate}
-                        date = {date}
-                    />
-                })
+                sections && sections.length ?
+                sections.sort(function(a, b) {
+                    return a.creationTime - b.creationTime;
+                }).map(section => {
+                    console.log(section.tasks)
+                    return (
+                        <div key = {section?.id}>
+                            <TaskListSection
+                                tasks={Object.values(section?.tasks)}
+                                handleDeleteTask = {handleDeleteTask}
+                                handleAddTask = {handleAddTask}
+                                handleEditTask = {handleEditTask}
+                                handleToggleComplete = {handleToggleComplete}
+                                handleAssignPeriod = {handleAssignPeriod}
+                                handleAssignDueDate = {handleAssignDueDate}
+                                date = {date}
+                                section = {section}
+                            />
+                        </div>
+                    )
+                }) :
+                undefined
             }
-            <div>
+            <div className = {classes.tasksListContainer}>
                 <AddSectionButton 
                     visible = {addSectionButtonVisible}
                     setVisible = {setAddSectionButtonVisible}
@@ -53,6 +65,7 @@ const TasksList = ({
                     </div>
                 </AddSectionButton>
                 <AddSectionForm 
+                    handleAddSection = {handleAddSection}
                     visible = {!addSectionButtonVisible}
                     setVisible = {setAddSectionButtonVisible}
                 />

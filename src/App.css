@@ -20,10 +20,6 @@
   --text-color-5: var(--bg-color-4)
 }
 
-.border-1 {
-  border: 1px solid var(--text-color-3);
-}
-
 .bg-1 {
   background: var(--bg-color-1)
 }
@@ -159,4 +155,12 @@
 
 .z-1000 {
   z-index: 1000;
+}
+
+.border-1 {
+  border-color: var(--text-color-1);
+}
+
+.border-2 {
+  border-color: var(--text-color-2);
 }

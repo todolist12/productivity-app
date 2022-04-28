@@ -7,7 +7,7 @@ import { createUid } from '../../../../utils/functions'
 import TasksList from '../../../components/TasksList/TasksList'
 import * as immutable from 'object-path-immutable'
 
-const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
+const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
     const { currentUser, setCurrentUser } = useContext(AuthContext)
 
     const handleAddTask = async (
@@ -123,7 +123,7 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         const docRef2 = doc(db, `users/${currentUser.id}/days/${task.dueDate}`)
 
         const docData1 = {
-            tasks: {}
+            sections: {}
         }
 
         const docData2 = {
@@ -163,18 +163,35 @@ const DayTasksList = ({ date, day, month, year, tasks, setTasks }) => {
         const sectionId = createUid();
         const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`)
         const docData = {
-            sections: {
-                [sectionId] : {
-                    tasks: {}
-                }
+            ['sections.' + sectionId] : {
+                tasks: {},
+                name: name,
+                id: sectionId,
+                creationTime: date.getTime()
             }
+        }
+        try {
+            try {
+                await updateDoc(docRef, docData);
+            } catch (e) {
+                await setDoc(docRef, {});
+                await updateDoc(docRef, docData)
+            }
+            setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}.sections.${sectionId}`, {
+                tasks: {},
+                name: name,
+                id: sectionId,
+            }))
+        } catch (e) {
+            console.log(e)
         }
     }
 
     return (
         <TasksList 
-            tasks = {tasks} 
-            setTasks = {setTasks}
+            sections = {sections}
+            setSections = {setSections}
+            handleAddSection = {handleAddSection}
             handleAddTask = {handleAddTask} 
             handleEditTask = {hanldeEditTask}
             handleToggleComplete = {handleToggleComplete}

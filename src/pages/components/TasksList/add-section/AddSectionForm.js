@@ -41,10 +41,13 @@ const AddSectionForm = ({
                                         nameInput, 
                                         section,
                                     );
+                                    setNameInput('')
+                                    setVisible(false)
                                 } else {
                                     handleAddSection(
                                         nameInput, 
                                     );
+                                    setNameInput('')
                                 }
                             }}
                         >
