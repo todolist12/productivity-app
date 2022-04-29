@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { classes } from '../../../utils/classes'
-import AddTaskButton from './add-task/AddTaskButton'
-import AddTaskForm from './add-task/AddTaskForm'
-import Task from './task/Task'
+import { classes } from '../../../../utils/classes'
+import AddTaskButton from '../add-task/AddTaskButton'
+import AddTaskForm from '../add-task/AddTaskForm'
+import Task from '../task/Task'
 
 const TaskListSection = ({
         tasks, 
         setTasks,
         handleDeleteTask, 
+        handleDeleteSection,
         handleAddTask,
         handleEditTask, 
         handleToggleComplete, 
@@ -25,8 +26,9 @@ const TaskListSection = ({
                     <div className = 'text-color-1 font-bold'>
                         {section && section.name}
                     </div>
-                    <div className = {classes.iconButton + ' text-color-1'}>
-                        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    <div className = {classes.iconButton + ' text-color-1'} onClick = {e => handleDeleteSection(section)}>
+                        {/* <ion-icon name="ellipsis-horizontal-outline"></ion-icon> */}
+                        <ion-icon name="trash-outline"></ion-icon>
                     </div>
                 </div>
                 {

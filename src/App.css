@@ -145,9 +145,9 @@
   display: block;
 }
 
-.border-2 {
+/* .border-2 {
   border: 1px solid var(--bg-color-3);
-}
+} */
 
 .border-3 {
   border-width: 3px;
@@ -158,9 +158,13 @@
 }
 
 .border-1 {
-  border-color: var(--text-color-1);
+  border-color: var(--text-color-3);
 }
 
 .border-2 {
   border-color: var(--text-color-2);
+}
+
+.on-hover-show-child:hover .show-child {
+  opacity: 1;
 }

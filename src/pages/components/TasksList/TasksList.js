@@ -5,7 +5,7 @@ import AddSectionForm from './add-section/AddSectionForm'
 import AddTaskButton from './add-task/AddTaskButton'
 import AddTaskForm from './add-task/AddTaskForm'
 import Task from './task/Task'
-import TaskListSection from './TaskListSection'
+import TaskListSection from './section/TaskListSection'
 
 const TasksList = ({ 
         sections,
@@ -31,7 +31,6 @@ const TasksList = ({
                 sections.sort(function(a, b) {
                     return a.creationTime - b.creationTime;
                 }).map(section => {
-                    console.log(section.tasks)
                     return (
                         <div key = {section?.id}>
                             <TaskListSection
@@ -43,6 +42,7 @@ const TasksList = ({
                                 handleAssignPeriod = {handleAssignPeriod}
                                 handleAssignDueDate = {handleAssignDueDate}
                                 date = {date}
+                                handleDeleteSection = {handleDeleteSection}
                                 section = {section}
                             />
                         </div>
@@ -50,16 +50,17 @@ const TasksList = ({
                 }) :
                 undefined
             }
-            <div className = {classes.tasksListContainer}>
+            <div className = {classes.tasksListContainer + ' on-hover-show-child' }>
                 <AddSectionButton 
                     visible = {addSectionButtonVisible}
                     setVisible = {setAddSectionButtonVisible}
+                    className = 'w-full flex items-center opacity-0 show-child'
                 >
-                    <div className = "flex w-28 items-center text-color-5 hover">
+                    <div className = "grow w-full border-t border-1 flex w-28 items-center justify-center text-color-5">
                         <div className = "flex items-center text-xl">
                             <ion-icon name="add-outline"></ion-icon>
                         </div>
-                        <div>
+                        <div className = 'hover'>
                             Add Section
                         </div>
                     </div>

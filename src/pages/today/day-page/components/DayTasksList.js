@@ -187,11 +187,25 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
         }
     }
 
+    const handleDeleteSection = async (section) => {
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`);
+        const docData = {
+            ['sections.' + section.id] : deleteField()
+        }
+        try {
+            await updateDoc(docRef, docData)
+            setCurrentUser(immutable.del(currentUser, `days.${day + '-' + month + '-' + year}.` + 'sections.' + section.id))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <TasksList 
             sections = {sections}
             setSections = {setSections}
             handleAddSection = {handleAddSection}
+            handleDeleteSection = {handleDeleteSection}
             handleAddTask = {handleAddTask} 
             handleEditTask = {hanldeEditTask}
             handleToggleComplete = {handleToggleComplete}
