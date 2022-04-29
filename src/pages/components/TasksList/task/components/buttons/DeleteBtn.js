@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { classes } from '../../../../../../utils/classes'
+import { TaskListContext } from '../../../../../../providers/TaskListProvider'
 
-const DeleteBtn = ({ handleDelete, task }) => {
+const DeleteBtn = ({ task }) => {
+    const {handleDeleteTask} = useContext(TaskListContext)
+
     const deleteTask = (e) => {
         e.stopPropagation();
-        handleDelete(task)
+        handleDeleteTask(task)
     }
 
     return (

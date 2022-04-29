@@ -1,15 +1,14 @@
 import { ClickAwayListener } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { classes } from '../../../../utils/classes'
 import SetDueDate from './components/SetDueDate'
 import SetLabel from './components/SetLabel'
 import SetPriority from './components/SetPriority'
+import { TaskListContext } from '../../../../providers/TaskListProvider'
 
 const AddTaskForm = ({ 
     setVisible, 
-    handleAddTask,
-    handleEditTask,
     editTask,
     task,
     title, 
@@ -34,7 +33,7 @@ const AddTaskForm = ({
         );
     const [priorityBtnOpen, setPriorityBtnOpen] = useState(false)
 
-    // console.log(dueDateInput, ' dueDate ', editTask)
+    const { handleEditTask, handleAddTask } = useContext(TaskListContext)
     
     return (
         <>
