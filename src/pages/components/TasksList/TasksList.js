@@ -19,6 +19,7 @@ const TasksList = ({
         handleToggleComplete, 
         handleAssignPeriod,
         handleAssignDueDate,
+        updateSectionName,
         date,
     }) => {
 
@@ -34,6 +35,7 @@ const TasksList = ({
                     return (
                         <div key = {section?.id}>
                             <TaskListSection
+                                updateSectionName = {updateSectionName}
                                 tasks={Object.values(section?.tasks)}
                                 handleDeleteTask = {handleDeleteTask}
                                 handleAddTask = {handleAddTask}

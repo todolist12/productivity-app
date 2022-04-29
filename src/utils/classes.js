@@ -8,5 +8,6 @@ export const classes = {
     addTaskFormContainer: 'bg-red-500 rounded ',
     addTaskFormInput: 'bg-1 text-color-1 outline-none p-1 rounded ',
     iconButton: 'flex items-center text-lg m-1 btn-hover ',
-    disabled: 'opacity-50 disabled-hover '
+    disabled: 'opacity-50 disabled-hover ',
+    editInput: 'outline-none bg-transparent font-bold text-lg text-color-1'
 }

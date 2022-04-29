@@ -14,18 +14,21 @@ const TaskListSection = ({
         handleToggleComplete, 
         handleAssignPeriod,
         handleAssignDueDate,
+        updateSectionName,
         date,
         section,
     }) => {
 
     const [addTaskFormVisible, setAddTaskFormVisible] = useState(false)
+    const [sectionName, setSectionName] = useState(section?.name)
 
     return (
         <div className = {classes.tasksListContainer + ' //overflow-hidden'}>
                 <div className = 'flex justify-between items-center border-b border-1'>
-                    <div className = 'text-color-1 font-bold'>
+                    <input className = {classes.editInput + ' grow'} value = {sectionName} onChange = {e => { setSectionName(e.target.value); updateSectionName(e.target.value, section)}} />
+                    {/* <div className = 'text-color-1 font-bold'>
                         {section && section.name}
-                    </div>
+                    </div> */}
                     <div className = {classes.iconButton + ' text-color-1'} onClick = {e => handleDeleteSection(section)}>
                         {/* <ion-icon name="ellipsis-horizontal-outline"></ion-icon> */}
                         <ion-icon name="trash-outline"></ion-icon>

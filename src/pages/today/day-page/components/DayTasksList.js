@@ -200,6 +200,18 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
         }
     }
 
+    const updateSectionName = async(newName, section) => {
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`);
+        const docData = {
+            ['sections.' + section.id + '.name']: newName,
+        }
+        try {
+            await updateDoc(docRef, docData)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <TasksList 
             sections = {sections}
@@ -210,6 +222,7 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
             handleEditTask = {hanldeEditTask}
             handleToggleComplete = {handleToggleComplete}
             handleDeleteTask = {handleDeleteTask}
+            updateSectionName = {updateSectionName}
             date = {day + '-' + month + '-'+ year} 
         />
     )
