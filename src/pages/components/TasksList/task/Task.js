@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import useLocalStorage from '../../../../hooks/UseLocalStorage'
 import { Transition } from '@mantine/core';
 import { classes } from '../../../../utils/classes';
@@ -6,6 +6,7 @@ import { PRIORITY_COLORS } from '../add-task/components/SetPriority';
 import Menu from './components/Menu';
 import { useState } from 'react';
 import AddTaskForm from '../add-task/AddTaskForm';
+import { TaskListContext } from '../../../../providers/TaskListProvider';
 
 const scaleY = {
     in: { opacity: 1, transform: 'scaleY(1)' },
@@ -20,7 +21,6 @@ const Task = ({
         handleDelete, 
         handleEditTask, 
         handleAddTask, 
-        handleToggleComplete, 
         handleAssignDueDate,
         date,
     }) => {
@@ -30,6 +30,8 @@ const Task = ({
     const [menuOpen, setMenuOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
     const [addChildOpen, setAddChildOpen] = useState(false)
+
+    const { handleToggleComplete } = useContext(TaskListContext)
 
     const handleOpenEdit = () => { setEditOpen(true); setMenuOpen(false)}
 

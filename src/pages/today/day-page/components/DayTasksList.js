@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../providers/AuthProvider'
 import { createUid } from '../../../../utils/functions'
 import TasksList from '../../../components/TasksList/TasksList'
 import * as immutable from 'object-path-immutable'
+import TaskListProvider from '../../../../providers/TaskListProvider'
 
 const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
     const { currentUser, setCurrentUser } = useContext(AuthContext)
@@ -213,7 +214,7 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
     }
 
     return (
-        <TasksList 
+        <TaskListProvider 
             sections = {sections}
             setSections = {setSections}
             handleAddSection = {handleAddSection}
@@ -224,7 +225,13 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
             handleDeleteTask = {handleDeleteTask}
             updateSectionName = {updateSectionName}
             date = {day + '-' + month + '-'+ year} 
-        />
+        >
+            <TasksList 
+                sections = {sections}
+                setSections = {setSections}
+                date = {day + '-' + month + '-'+ year} 
+            />
+        </TaskListProvider>
     )
 }
 

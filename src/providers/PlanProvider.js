@@ -11,7 +11,6 @@ const PlanProvider = ({ children }) => {
     const [planLoading, setPlanLoading] = useState((currentUser.plans[planId] !== undefined));
 
     useEffect(() => {
-        // setPlanLoading(true);
         if(!loading) {
             if(currentUser && currentUser.plans && currentUser.plans[planId]) {
                 setPlan(currentUser.plans[planId])
