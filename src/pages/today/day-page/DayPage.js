@@ -10,6 +10,7 @@ import DayTasksList from './components/DayTasksList'
 const DayPage = ({ date, day, month, year }) => {
     const { currentUser, loading } = useContext(AuthContext)
     const [sections, setSections] = useState([])
+    const [view, setView] = useState('list')
 
     useEffect(() => {
         if(!loading) {
@@ -28,19 +29,26 @@ const DayPage = ({ date, day, month, year }) => {
                 !loading ? 
                     <>
                         <DayHeader 
+                            listView = {view}
+                            setListView = {setView}
                             date = {date} 
                             day = {day} 
                             month = {month} 
                             year = {year}
                         />
-                        <DayTasksList
-                            date = {date} 
-                            day = {day} 
-                            month = {month} 
-                            year = {year}
-                            sections = {sections}
-                            setSections = {setSections}
-                        />
+                        {
+                            view === 'list' ? <DayTasksList
+                                date = {date} 
+                                day = {day} 
+                                month = {month} 
+                                year = {year}
+                                sections = {sections}
+                                setSections = {setSections}
+                            /> : 
+                            <div>
+                                asdf
+                            </div>
+                        }
                     </>
                 :
                     <Loading />
