@@ -39,7 +39,7 @@ const TaskListSection = ({
                     tasks && tasks.length ? 
                         tasks.sort(function(a, b) {
                             if(!(b.priority - a.priority)) {
-                                return b.creationTime - a.creationTime
+                                return a.creationTime - b.creationTime
                             }
                             return b.priority - a.priority
                         }).map(task => {

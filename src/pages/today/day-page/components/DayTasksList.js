@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { deleteField, doc, setDoc, updateDoc } from 'firebase/firestore'
-import React, { useContext } from 'react'
+import { deleteField, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
+import React, { useContext, useEffect } from 'react'
 import { db } from '../../../../firebase-config'
 import { AuthContext } from '../../../../providers/AuthProvider'
 import { createUid } from '../../../../utils/functions'
@@ -118,6 +118,7 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
                 path: path,
                 id: task.id,
                 completed: task.completed,
+                creationTime: task.creationTime
             }
         }
 
@@ -212,6 +213,73 @@ const DayTasksList = ({ date, day, month, year, sections, setSections }) => {
             console.log(e)
         }
     }
+
+    const initializeDay = async () => {
+        const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`);
+        const docData = {
+            sections: {
+                todo: {
+                    creationTime: Number(1),
+                    id: 'todo',
+                    name: 'todo',
+                    tasks: {},
+                },
+                done: {
+                    creationTime: Number(2),
+                    id: 'done',
+                    name: 'done',
+                    tasks: {},
+                },
+                overdue: {
+                    creationTime: Number(3),
+                    id: 'overdue',
+                    name: 'overdue',
+                    tasks: {},
+                },
+                thisweek: {
+                    creationTime: Number(4),
+                    id: 'thisweek',
+                    name: 'thisweek',
+                    tasks: {},
+                },
+                nextweek: {
+                    creationTime: Number(5),
+                    id: 'nextweek',
+                    name: 'nextweek',
+                    tasks: {},
+                },
+                later: {
+                    creationTime: Number(6),
+                    id: 'later',
+                    name: 'later',
+                    tasks: {},
+                }
+            }
+        }
+        try {
+            await setDoc(docRef, docData) 
+            setCurrentUser(immutable.set(currentUser, `days.${day + '-' + month + '-' + year}`, docData))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        const handleInializeDay = async () => {
+            const docRef = doc(db, `users/${currentUser.id}/days/${day + '-' + month + '-' + year}`);
+            try {
+                const snapshot = await getDoc(docRef)
+                if(snapshot.exists()) {
+                    return ;
+                } else {
+                    await initializeDay();
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        handleInializeDay();
+    }, [])
 
     return (
         <TaskListProvider 
